@@ -1,1 +1,2 @@
 # MVCAgentJADE
+mvn package
