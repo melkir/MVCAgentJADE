@@ -1,5 +1,6 @@
 package controller;
 
+import model.Agent;
 import model.AgentProvider;
 import model.AgentSeeker;
 import model.PlatformManager;
@@ -24,25 +25,23 @@ public class PlatformManagerController {
     }
 
     private void createAgent() {
-        String agentName, agentType;
+        Agent agent;
         try {
-            // Retrieve field content
-            agentName = view.getAgentName();
-            agentType = view.getAgentType();
+            agent = new Agent(view.getAgentName(), view.getAgentType());
             // Insert agent information into model
-            model.addAgent(agentName, agentType);
+            model.addAgent(agent);
             // Update the console to add the agent
-            view.addAgentToConsole(model.getLastAgentCreated().getAgentInfo());
+            view.addAgentToConsole(agent.getAgentInfo());
             // Show the agent corresponding view
-            if (agentType.equals("provider")) {
+            if (agent.getType().equals("provider")) {
                 AgentProviderView providerView = new AgentProviderView();
                 new ProviderController(new AgentProvider(view.getAgentName()), providerView);
                 providerView.setVisible(true);
-                providerView.setTitle("Agent " + agentType + " " + agentName);
-            } else if (agentType.equals("seeker")) {
+                providerView.setTitle("Agent " + agent.getType() + " " + agent.getName());
+            } else if (agent.getType().equals("seeker")) {
                 AgentSeekerView seekerView = new AgentSeekerView();
                 new SeekerController(new AgentSeeker(view.getAgentName()), seekerView);
-                seekerView.setTitle("Agent " + agentType + " " + agentName);
+                seekerView.setTitle("Agent " + agent.getType() + " " + agent.getName());
                 seekerView.setVisible(true);
             } else System.out.println("unknown");
         } catch (PlatformManager.NullAgentNameException e) {

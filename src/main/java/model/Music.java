@@ -56,7 +56,7 @@ public class Music {
     }
 
     public String toString() {
-        return genre + "," + artist + "," + name + "," + price + "," + note;
+        return genre + "," + artist + "," + album + "," + name + "," + price + "," + note;
     }
 
 }

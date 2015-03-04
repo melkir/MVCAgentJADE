@@ -10,13 +10,9 @@ import java.util.Observable;
 public class PlatformManager extends Observable {
     private List<Agent> agentList = new ArrayList<Agent>();
 
-    public void addAgent(String name, String type) throws NullAgentNameException {
-        if (name.isEmpty()) throw new NullAgentNameException("You need to enter the agent name");
-        agentList.add(new Agent(name, type));
-    }
-
-    public Agent getLastAgentCreated() {
-        return agentList.get(agentList.size() - 1);
+    public void addAgent(Agent agent) throws NullAgentNameException {
+        if (agent.getName().isEmpty()) throw new NullAgentNameException("You need to enter the agent name");
+        agentList.add(agent);
     }
 
     public class NullAgentNameException extends Exception {

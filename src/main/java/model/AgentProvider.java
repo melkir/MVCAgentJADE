@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class AgentProvider extends Agent {
 
-    List<Music> musicListAvailable, musicListSold = new ArrayList<Music>();
+    List<Music> musicListAvailable = new ArrayList<Music>(), musicListSold = new ArrayList<Music>();
 
     public AgentProvider(String name) {
         super(name);
