@@ -1,11 +1,7 @@
 import controller.PlatformManagerController;
-import model.Music;
 import model.PlatformManager;
 import org.gnome.gtk.Gtk;
 import view.PlatformManagerView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by melkir on 02/03/15.
