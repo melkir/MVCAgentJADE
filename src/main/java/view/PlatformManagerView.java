@@ -36,10 +36,20 @@ public class PlatformManagerView extends AbstractView {
         textViewResult = (TextView) builder.getObject("textview_result");
     }
 
+    /**
+     * Return the name of the agent
+     *
+     * @return String name
+     */
     public String getAgentName() {
         return entryName.getText();
     }
 
+    /**
+     * Return the type selected for the agent
+     *
+     * @return String type
+     */
     public String getAgentType() {
         if (radioProvider.getActive()) return "provider";
         else if (radioSeeker.getActive()) return "seeker";
@@ -49,7 +59,7 @@ public class PlatformManagerView extends AbstractView {
     /**
      * Add agent to the result view panel
      */
-    public void addAgentToView(String agent) {
+    public void addAgentToConsole(String agent) {
         TextBuffer textBuffer = textViewResult.getBuffer();
         textBuffer.insert(textBuffer.getIterEnd(), agent + '\n');
     }

@@ -1,9 +1,6 @@
 package view;
 
-import org.gnome.gtk.Button;
-import org.gnome.gtk.Entry;
-import org.gnome.gtk.TextView;
-import org.gnome.gtk.Window;
+import org.gnome.gtk.*;
 
 import java.util.Observable;
 
@@ -36,6 +33,22 @@ public class AgentProviderView extends AbstractView {
         textViewMusicSold = (TextView) builder.getObject("music_sold");
     }
 
+    public String getArtist() {
+        return entryArtist.getText();
+    }
+
+    public String getAlbum() {
+        return entryAlbum.getText();
+    }
+
+    public String getName() {
+        return entryName.getText();
+    }
+
+    public String getPrice() {
+        return entryPrice.getText();
+    }
+
     public void setTitle(String title) {
         mainWindow.setTitle(title);
     }
@@ -44,6 +57,20 @@ public class AgentProviderView extends AbstractView {
     public void setVisible(boolean visible) {
         if (visible) mainWindow.show();
         else mainWindow.hide();
+    }
+
+    public void addButtonAddClickedListener(Button.Clicked listener) {
+        buttonAdd.connect(listener);
+    }
+
+    public void addMusicSoldToConsole(String music) {
+        TextBuffer textBuffer = textViewMusicSold.getBuffer();
+        textBuffer.insert(textBuffer.getIterEnd(), music + '\n');
+    }
+
+    public void addMusicAvailableToConsole(String music) {
+        TextBuffer textBuffer = textViewMusicAvailable.getBuffer();
+        textBuffer.insert(textBuffer.getIterEnd(), music + '\n');
     }
 
     public void addWindowCloseEvent(Window.DeleteEvent event) {

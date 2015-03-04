@@ -31,8 +31,8 @@ public class PlatformManagerController {
             agentType = view.getAgentType();
             // Insert agent information into model
             model.addAgent(agentName, agentType);
-            // Update the view to add the agent
-            view.addAgentToView(model.getAgentInfo());
+            // Update the console to add the agent
+            view.addAgentToConsole(model.getLastAgentCreated().getAgentInfo());
             // Show the agent corresponding view
             if (agentType.equals("provider")) {
                 AgentProviderView providerView = new AgentProviderView();
@@ -45,10 +45,8 @@ public class PlatformManagerController {
                 seekerView.setTitle("Agent " + agentType + " " + agentName);
                 seekerView.setVisible(true);
             } else System.out.println("unknown");
-
-        } catch (NullPointerException ex) {
-            // Show error message if name field is empty
-            view.displayErrorMessage("You need to enter the agent name");
+        } catch (PlatformManager.NullAgentNameException e) {
+            view.displayErrorMessage(e.getMessage());
         }
     }
 
@@ -68,4 +66,5 @@ public class PlatformManagerController {
             createAgent();
         }
     }
+
 }
