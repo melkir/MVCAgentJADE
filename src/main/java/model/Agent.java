@@ -29,12 +29,9 @@ public class Agent extends Observable {
     public String getType() {
         return type;
     }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
+    
     public String getAgentInfo() {
         return "Agent " + type + " " + name;
     }
+
 }
