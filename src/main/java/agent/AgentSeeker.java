@@ -5,7 +5,7 @@ import jade.lang.acl.ACLMessage;
 /**
  * Created by melkir on 04/03/15.
  */
-public class MusicSeekerAgent extends MusicAgent {
+public class AgentSeeker extends AbstractAgent {
 
     @Override
     protected void setup() {

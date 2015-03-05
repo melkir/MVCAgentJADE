@@ -12,8 +12,8 @@ import view.AgentProviderView;
  * Created by melkir on 03/03/15.
  */
 public class ProviderController {
-    AgentProvider model;
-    AgentProviderView view;
+    private final AgentProvider model;
+    private final AgentProviderView view;
 
     public ProviderController(AgentProvider model, AgentProviderView view) {
         this.model = model;

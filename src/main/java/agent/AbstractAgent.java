@@ -7,7 +7,7 @@ import jade.lang.acl.ACLMessage;
 /**
  * Created by melkir on 05/03/15.
  */
-public abstract class MusicAgent extends Agent {
+public abstract class AbstractAgent extends Agent {
 
     @Override
     // Agent initializations

@@ -8,11 +8,12 @@ import java.util.List;
  */
 public class AgentProvider extends Agent {
 
-    List<Music> musicListAvailable = new ArrayList<Music>(), musicListSold = new ArrayList<Music>();
+    private final List<Music> musicListAvailable = new ArrayList<Music>();
+    private final List<Music> musicListSold = new ArrayList<Music>();
 
     public AgentProvider(String name) {
-        super(name);
-        this.type = "provider";
+        super(name, "provider");
+        this.agent = new agent.AgentProvider();
     }
 
     public void addMusicAvailable(Music music) {

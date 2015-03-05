@@ -10,10 +10,10 @@ import java.util.Observable;
 public class AgentSeekerView extends AbstractView {
     // ComboBoxText comboBoxTextGenre;
     // RadioGroup radioGroupNote;
-    Window mainWindow;
+    private Window mainWindow;
     Entry entryArtist, entryAlbum, entryName, entryMaxPrice, entryNbMusic, entryMaxBudget;
     TextView textViewMusicFound;
-    Button buttonAdd;
+    private Button buttonAdd;
 
     public AgentSeekerView() {
         super("AgentSeeker.glade");
@@ -22,7 +22,6 @@ public class AgentSeekerView extends AbstractView {
     protected void initComposant() {
         // comboBoxTextGenre = (ComboBoxText) builder.getObject("comboboxtext_genre");  // Bug
         // radioGroupNote = ((RadioButton) builder.getObject("1starts")).getGroup();    // Bug
-        mainWindow = (Window) builder.getObject("mainWindow");
         textViewMusicFound = (TextView) builder.getObject("music_found");
         entryArtist = (Entry) builder.getObject("entry_artist");
         entryAlbum = (Entry) builder.getObject("entry_album");
@@ -33,16 +32,6 @@ public class AgentSeekerView extends AbstractView {
         buttonAdd = (Button) builder.getObject("button_submit");
     }
 
-    public void setTitle(String title) {
-        mainWindow.setTitle(title);
-    }
-
-    @Override
-    public void setVisible(boolean visible) {
-        if (visible) mainWindow.show();
-        else mainWindow.hide();
-    }
-
     public void addMusicPurchasedToConsole(String music) {
         TextBuffer textBuffer = textViewMusicFound.getBuffer();
         textBuffer.insert(textBuffer.getIterEnd(), music + '\n');
@@ -50,10 +39,6 @@ public class AgentSeekerView extends AbstractView {
 
     public void addButtonAddClickedListener(Button.Clicked listener) {
         buttonAdd.connect(listener);
-    }
-
-    public void addWindowCloseEvent(Window.DeleteEvent event) {
-        mainWindow.connect(event);
     }
 
     @Override

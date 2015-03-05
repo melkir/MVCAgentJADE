@@ -8,11 +8,11 @@ import java.util.List;
  */
 public class AgentSeeker extends Agent {
 
-    List<Music> musicPurchasedList = new ArrayList<Music>();
+    private final List<Music> musicPurchasedList = new ArrayList<Music>();
 
     public AgentSeeker(String name) {
-        super(name);
-        this.type = "seeker";
+        super(name, "seeker");
+        this.agent = new agent.AgentSeeker();
     }
 
     public void addPurchasedMusic(Music music) {

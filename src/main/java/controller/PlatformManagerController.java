@@ -1,5 +1,6 @@
 package controller;
 
+import agent.Launcher;
 import model.Agent;
 import model.AgentProvider;
 import model.AgentSeeker;
@@ -14,14 +15,15 @@ import view.PlatformManagerView;
  * Created by melkir on 03/03/15.
  */
 public class PlatformManagerController {
-    private PlatformManager model;
-    private PlatformManagerView view;
+    private final PlatformManager model;
+    private final PlatformManagerView view;
 
     public PlatformManagerController(PlatformManager model, PlatformManagerView view) {
         this.view = view;
         this.model = model;
         this.view.addButtonAddClickedListener(new ButtonAddClickedListener());
         this.view.addEntryActivateListener(new EntryNameActivateListener());
+        new Launcher("false");
     }
 
     private void createAgent() {
@@ -44,6 +46,8 @@ public class PlatformManagerController {
                 seekerView.setTitle(agent.getAgentInfo());
                 seekerView.setVisible(true);
             } else System.out.println("unknown");
+            // Start the agent
+            agent.start();
         } catch (PlatformManager.NullAgentNameException e) {
             view.displayErrorMessage(e.getMessage());
         }

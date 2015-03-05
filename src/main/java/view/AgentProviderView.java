@@ -10,10 +10,10 @@ import java.util.Observable;
 public class AgentProviderView extends AbstractView {
     // ComboBoxText comboBoxTextGenre;
     // RadioGroup radioGroupNote;
-    Window mainWindow;
+    private Window mainWindow;
     Entry entryArtist, entryAlbum, entryName, entryPrice; // entrySearchMusic;
     TextView textViewMusicAvailable, textViewMusicSold;
-    Button buttonAdd;
+    private Button buttonAdd;
 
     public AgentProviderView() {
         super("AgentProvider.glade");
@@ -23,7 +23,6 @@ public class AgentProviderView extends AbstractView {
         // entrySearchMusic = (Entry) builder.getObject("search_music");                // Not implemented
         // comboBoxTextGenre = (ComboBoxText) builder.getObject("comboboxtext_genre");  // Bug
         // radioGroupNote = ((RadioButton) builder.getObject("1starts")).getGroup();    // Bug
-        mainWindow = (Window) builder.getObject("mainWindow");
         textViewMusicAvailable = (TextView) builder.getObject("music_available");
         entryArtist = (Entry) builder.getObject("entry_artist");
         entryAlbum = (Entry) builder.getObject("entry_album");
@@ -49,16 +48,6 @@ public class AgentProviderView extends AbstractView {
         return entryPrice.getText();
     }
 
-    public void setTitle(String title) {
-        mainWindow.setTitle(title);
-    }
-
-    @Override
-    public void setVisible(boolean visible) {
-        if (visible) mainWindow.show();
-        else mainWindow.hide();
-    }
-
     public void addButtonAddClickedListener(Button.Clicked listener) {
         buttonAdd.connect(listener);
     }
@@ -71,10 +60,6 @@ public class AgentProviderView extends AbstractView {
     public void addMusicAvailableToConsole(String music) {
         TextBuffer textBuffer = textViewMusicAvailable.getBuffer();
         textBuffer.insert(textBuffer.getIterEnd(), music + '\n');
-    }
-
-    public void addWindowCloseEvent(Window.DeleteEvent event) {
-        mainWindow.connect(event);
     }
 
     @Override

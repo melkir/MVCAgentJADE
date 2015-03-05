@@ -11,8 +11,8 @@ import view.AgentSeekerView;
  * Created by melkir on 03/03/15.
  */
 public class SeekerController {
-    AgentSeeker model;
-    AgentSeekerView view;
+    private final AgentSeeker model;
+    private final AgentSeekerView view;
 
     public SeekerController(AgentSeeker model, AgentSeekerView view) {
         this.model = model;

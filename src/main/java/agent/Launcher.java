@@ -11,29 +11,35 @@ import jade.wrapper.StaleProxyException;
  * Created by melkir on 04/03/15.
  */
 public class Launcher {
+
+    private static AgentContainer mainContainer;
+
     /**
      * Create and launch MusicSeeker and MusicProvider agent
      */
-    public Launcher() {
+    public Launcher(String debug) {
         Runtime runtime = Runtime.instance();
         Profile config = new ProfileImpl("localhost", 8888, null);
-//        config.setParameter("gui", "true");
-        AgentContainer mc = runtime.createMainContainer(config);
-        AgentController acSeeker, acProvider;
+        config.setParameter("gui", debug);
+        mainContainer = runtime.createMainContainer(config);
+    }
+
+    public static void startAgent(String agentName, String className, String[] args) {
+        AgentController ac;
         try {
-//            Object[] obj = new Object[1];
-//            obj[0] = "Hello";
-            acProvider = mc.createNewAgent("TestProvider", MusicProviderAgent.class.getName(), null);
-            acSeeker = mc.createNewAgent("TestSeeker", MusicSeekerAgent.class.getName(), null);
-            acProvider.start();
-            acSeeker.start();
+            // Object[] obj = new Object[1];
+            // obj[0] = "Hello";
+            ac = mainContainer.createNewAgent(agentName, className, args);
+            ac.start();
         } catch (StaleProxyException e) {
             e.printStackTrace();
         }
     }
 
     public static void main(String[] args) {
-        new Launcher();
+        new Launcher("false");
+        startAgent("TestProvider", AgentProvider.class.getName(), null);
+        startAgent("TestSeeker", AgentSeeker.class.getName(), null);
     }
 
 }

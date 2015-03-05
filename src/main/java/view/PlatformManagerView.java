@@ -10,7 +10,6 @@ import java.util.Observable;
  * Created by melkir on 02/03/15.
  */
 public class PlatformManagerView extends AbstractView {
-    Window mainWindow;
     Entry entryName;
     RadioButton radioProvider, radioSeeker;
     TextView textViewResult;
@@ -18,7 +17,7 @@ public class PlatformManagerView extends AbstractView {
 
     public PlatformManagerView() {
         super("PlatformManager.glade");
-        mainWindow.connect(new Window.DeleteEvent() {
+        window.connect(new Window.DeleteEvent() {
             @Override
             public boolean onDeleteEvent(Widget widget, Event event) {
                 Gtk.mainQuit();
@@ -28,7 +27,6 @@ public class PlatformManagerView extends AbstractView {
     }
 
     protected void initComposant() {
-        mainWindow = (Window) builder.getObject("mainWindow");
         entryName = (Entry) builder.getObject("entry_name");
         radioProvider = (RadioButton) builder.getObject("radiobutton_provider");
         radioSeeker = (RadioButton) builder.getObject("radiobutton_seeker");
@@ -73,13 +71,8 @@ public class PlatformManagerView extends AbstractView {
     }
 
     public void displayErrorMessage(String errorMsg) {
-        final MessageDialog messageDialog = new MessageDialog(mainWindow, true, MessageType.ERROR, ButtonsType.CLOSE, errorMsg);
+        final MessageDialog messageDialog = new MessageDialog(window, true, MessageType.ERROR, ButtonsType.CLOSE, errorMsg);
         if (messageDialog.run() == ResponseType.CLOSE) messageDialog.destroy();
-    }
-
-    public void setVisible(boolean visible) {
-        if (visible) mainWindow.show();
-        else mainWindow.hide();
     }
 
     @Override
