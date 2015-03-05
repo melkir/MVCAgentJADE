@@ -114,7 +114,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label_maxPrice">
+                  <object class="GtkLabel" id="label_price">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Prix max musique:</property>
@@ -125,7 +125,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="entry_maxPrice">
+                  <object class="GtkEntry" id="entry_price">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="input_purpose">number</property>

@@ -1,6 +1,5 @@
 package controller;
 
-import agent.Launcher;
 import model.Agent;
 import model.AgentProvider;
 import model.AgentSeeker;
@@ -23,7 +22,7 @@ public class PlatformManagerController {
         this.model = model;
         this.view.addButtonAddClickedListener(new ButtonAddClickedListener());
         this.view.addEntryActivateListener(new EntryNameActivateListener());
-        new Launcher("false");
+//        new Launcher("false");
     }
 
     private void createAgent() {
@@ -37,17 +36,19 @@ public class PlatformManagerController {
             // Show the agent corresponding view
             if (agent.getType().equals("provider")) {
                 AgentProviderView providerView = new AgentProviderView();
-                new ProviderController(new AgentProvider(view.getAgentName()), providerView);
+                AgentProvider providerModel = new AgentProvider(view.getAgentName());
+                new ProviderController(providerModel, providerView);
                 providerView.setTitle(agent.getAgentInfo());
                 providerView.setVisible(true);
             } else if (agent.getType().equals("seeker")) {
                 AgentSeekerView seekerView = new AgentSeekerView();
-                new SeekerController(new AgentSeeker(view.getAgentName()), seekerView);
+                AgentSeeker seekerModel = new AgentSeeker(view.getAgentName());
+                new SeekerController(seekerModel, seekerView);
                 seekerView.setTitle(agent.getAgentInfo());
                 seekerView.setVisible(true);
             } else System.out.println("unknown");
             // Start the agent
-            agent.start();
+//            agent.start();
         } catch (PlatformManager.NullAgentNameException e) {
             view.displayErrorMessage(e.getMessage());
         }

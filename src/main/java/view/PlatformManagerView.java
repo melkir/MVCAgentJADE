@@ -75,8 +75,4 @@ public class PlatformManagerView extends AbstractView {
         if (messageDialog.run() == ResponseType.CLOSE) messageDialog.destroy();
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-
-    }
 }

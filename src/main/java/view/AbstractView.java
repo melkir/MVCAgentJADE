@@ -5,6 +5,7 @@ import org.gnome.gtk.Window;
 
 import java.io.FileNotFoundException;
 import java.text.ParseException;
+import java.util.Observable;
 import java.util.Observer;
 
 /**
@@ -41,6 +42,11 @@ public abstract class AbstractView implements Observer {
     public void setVisible(boolean visible) {
         if (visible) window.show();
         else window.hide();
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+
     }
 
 }
