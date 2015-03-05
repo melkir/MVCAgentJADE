@@ -10,12 +10,18 @@ public class MusicSeekerAgent extends MusicAgent {
     @Override
     protected void setup() {
         super.setup();
+        System.out.println("Seeker-agent "+getAID().getName()+" is ready.");
         receiveMessage();
         sendMessageToProviderAgent("OK", ACLMessage.INFORM);
     }
 
     public void sendMessageToProviderAgent(String message, int type) {
-        super.sendMessage("MusicProviderAgent", message, type);
+        super.sendMessage("TestProvider", message, type);
     }
 
+    @Override
+    protected void takeDown() {
+        super.takeDown();
+        System.out.println("Seeker-agent "+getAID().getName()+" terminating.");
+    }
 }

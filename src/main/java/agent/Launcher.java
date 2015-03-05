@@ -23,8 +23,8 @@ public class Launcher {
         try {
 //            Object[] obj = new Object[1];
 //            obj[0] = "Hello";
-            acProvider = mc.createNewAgent("MusicProviderAgent", MusicProviderAgent.class.getName(), null);
-            acSeeker = mc.createNewAgent("MusicSeekerAgent", MusicSeekerAgent.class.getName(), null);
+            acProvider = mc.createNewAgent("TestProvider", MusicProviderAgent.class.getName(), null);
+            acSeeker = mc.createNewAgent("TestSeeker", MusicSeekerAgent.class.getName(), null);
             acProvider.start();
             acSeeker.start();
         } catch (StaleProxyException e) {

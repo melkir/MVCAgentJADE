@@ -10,6 +10,7 @@ import jade.lang.acl.ACLMessage;
 public abstract class MusicAgent extends Agent {
 
     @Override
+    // Agent initializations
     protected void setup() {
         super.setup();
     }
