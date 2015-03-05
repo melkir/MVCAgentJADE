@@ -10,7 +10,7 @@ public class MusicProviderAgent extends MusicAgent {
     @Override
     protected void setup() {
         super.setup();
-        System.out.println("Provider-agent "+getAID().getName()+" is ready.");
+        System.out.println("Provider-agent " + getAID().getName() + " is ready.");
         sendMessageToSeekerAgent("Today it's raining", ACLMessage.INFORM);
         receiveMessage();
     }
@@ -22,6 +22,6 @@ public class MusicProviderAgent extends MusicAgent {
     @Override
     protected void takeDown() {
         super.takeDown();
-        System.out.println("Provider-agent "+getAID().getName()+" terminating.");
+        System.out.println("Provider-agent " + getAID().getName() + " terminating.");
     }
 }
