@@ -8,15 +8,15 @@ import java.util.List;
  */
 public class AgentSeeker extends Agent {
 
-    List<Music> musicListFound = new ArrayList<Music>();
+    List<Music> musicPurchasedList = new ArrayList<Music>();
 
     public AgentSeeker(String name) {
         super(name);
         this.type = "seeker";
     }
 
-    public void addMusicFound(Music music) {
-        musicListFound.add(music);
+    public void addPurchasedMusic(Music music) {
+        musicPurchasedList.add(music);
     }
 
 }

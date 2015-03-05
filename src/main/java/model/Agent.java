@@ -29,7 +29,7 @@ public class Agent extends Observable {
     public String getType() {
         return type;
     }
-    
+
     public String getAgentInfo() {
         return "Agent " + type + " " + name;
     }

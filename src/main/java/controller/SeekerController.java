@@ -33,7 +33,7 @@ public class SeekerController {
     private class ButtonAddClickedListener implements Button.Clicked {
         @Override
         public void onClicked(Button button) {
-            // TODO
+            // TODO Retrieve musics
         }
     }
 }

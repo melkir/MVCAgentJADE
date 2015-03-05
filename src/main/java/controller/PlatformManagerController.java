@@ -36,12 +36,12 @@ public class PlatformManagerController {
             if (agent.getType().equals("provider")) {
                 AgentProviderView providerView = new AgentProviderView();
                 new ProviderController(new AgentProvider(view.getAgentName()), providerView);
+                providerView.setTitle(agent.getAgentInfo());
                 providerView.setVisible(true);
-                providerView.setTitle("Agent " + agent.getType() + " " + agent.getName());
             } else if (agent.getType().equals("seeker")) {
                 AgentSeekerView seekerView = new AgentSeekerView();
                 new SeekerController(new AgentSeeker(view.getAgentName()), seekerView);
-                seekerView.setTitle("Agent " + agent.getType() + " " + agent.getName());
+                seekerView.setTitle(agent.getAgentInfo());
                 seekerView.setVisible(true);
             } else System.out.println("unknown");
         } catch (PlatformManager.NullAgentNameException e) {

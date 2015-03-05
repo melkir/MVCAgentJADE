@@ -43,7 +43,7 @@ public class AgentSeekerView extends AbstractView {
         else mainWindow.hide();
     }
 
-    public void addMusicToConsole(String music) {
+    public void addMusicPurchasedToConsole(String music) {
         TextBuffer textBuffer = textViewMusicFound.getBuffer();
         textBuffer.insert(textBuffer.getIterEnd(), music + '\n');
     }

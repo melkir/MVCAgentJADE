@@ -20,6 +20,7 @@ public class AgentProvider extends Agent {
     }
 
     public void addMusicSold(Music music) {
+        musicListAvailable.remove(music);
         musicListSold.add(music);
     }
 
