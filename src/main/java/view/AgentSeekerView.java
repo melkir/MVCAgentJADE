@@ -8,7 +8,6 @@ import org.gnome.gtk.TextView;
  * Created by melkir on 03/03/15.
  */
 public class AgentSeekerView extends AbstractAgentView {
-    // RadioGroup radioGroupNote;
     Entry entryNbMusic, entryMaxBudget;
     TextView textViewMusicFound;
 
@@ -18,7 +17,6 @@ public class AgentSeekerView extends AbstractAgentView {
 
     protected void initComposant() {
         super.initComposant();
-        // radioGroupNote = ((RadioButton) builder.getObject("1starts")).getGroup();    // Bug
         textViewMusicFound = (TextView) builder.getObject("music_found");
         entryNbMusic = (Entry) builder.getObject("entry_nbMusic");
         entryMaxBudget = (Entry) builder.getObject("entry_budget");

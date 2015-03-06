@@ -6,7 +6,6 @@ import org.gnome.gtk.TextView;
  * Created by melkir on 03/03/15.
  */
 public class AgentProviderView extends AbstractAgentView {
-    // RadioGroup radioGroupNote;
     TextView textViewMusicAvailable, textViewMusicSold;
 
     public AgentProviderView() {
@@ -15,8 +14,7 @@ public class AgentProviderView extends AbstractAgentView {
 
     protected void initComposant() {
         super.initComposant();
-        // entrySearchMusic = (Entry) builder.getObject("search_music");                // Not implemented
-        // radioGroupNote = ((RadioButton) builder.getObject("1starts")).getGroup();    // Bug
+//        entrySearchMusic = (Entry) builder.getObject("search_music");                // Not implemented
         textViewMusicAvailable = (TextView) builder.getObject("music_available");
         textViewMusicSold = (TextView) builder.getObject("music_sold");
     }

@@ -32,7 +32,7 @@ public class ProviderController {
             price = view.getPrice();
             // TODO Retrieve note and genre
             genre = view.getGenre();
-            note = "3";
+            note = view.getNote();
             Music music = new Music(genre, artist, album, name, price, note);
             // Add music to model
             model.addMusicAvailable(music);

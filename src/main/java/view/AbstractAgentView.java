@@ -7,9 +7,10 @@ import org.gnome.gtk.*;
  */
 public abstract class AbstractAgentView extends AbstractView {
 
-    Entry entryArtist, entryAlbum, entryName, entryPrice; // entrySearchMusic;
-    Button buttonAdd;
-    ComboBoxText comboGenre;
+    private Entry entryArtist, entryAlbum, entryName, entryPrice; // entrySearchMusic;
+    private Button buttonAdd;
+    private ComboBoxText comboGenre;
+    private RadioGroup radioGroupStars;
 
     public AbstractAgentView(String filepath) {
         super(filepath);
@@ -18,11 +19,18 @@ public abstract class AbstractAgentView extends AbstractView {
     @Override
     protected void initComposant() {
         createComboBoxGenre();
+        createRadioGroupStars();
         entryArtist = (Entry) builder.getObject("entry_artist");
         entryAlbum = (Entry) builder.getObject("entry_album");
         entryName = (Entry) builder.getObject("entry_name");
         entryPrice = (Entry) builder.getObject("entry_price");
         buttonAdd = (Button) builder.getObject("button_submit");
+    }
+
+    private void createRadioGroupStars() {
+        Box box = (Box) builder.getObject("box_stars");
+        radioGroupStars = new RadioGroup();
+        for (int i = 1; i < 6; i++) box.add(new RadioButton(radioGroupStars, Integer.toString(i)));
     }
 
     private void createComboBoxGenre() {
@@ -32,6 +40,10 @@ public abstract class AbstractAgentView extends AbstractView {
         for (String genre : listGenre) this.comboGenre.appendText(genre);
         this.comboGenre.setActive(0);
         grid.attach(comboGenre, 1, 0, 1, 1);
+    }
+
+    public String getNote() {
+        return ((RadioButton) radioGroupStars.getActive()).getLabel();
     }
 
     public String getGenre() {
