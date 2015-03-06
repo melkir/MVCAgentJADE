@@ -7,7 +7,7 @@ import org.gnome.gtk.TextView;
 /**
  * Created by melkir on 03/03/15.
  */
-public class AgentSeekerView extends AgentGenericView {
+public class AgentSeekerView extends AbstractAgentView {
     // RadioGroup radioGroupNote;
     Entry entryNbMusic, entryMaxBudget;
     TextView textViewMusicFound;

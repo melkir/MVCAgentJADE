@@ -5,13 +5,13 @@ import org.gnome.gtk.*;
 /**
  * Created by melkir on 05/03/15.
  */
-public abstract class AgentGenericView extends AbstractView {
+public abstract class AbstractAgentView extends AbstractView {
 
     Entry entryArtist, entryAlbum, entryName, entryPrice; // entrySearchMusic;
     Button buttonAdd;
     ComboBoxText comboGenre;
 
-    public AgentGenericView(String filepath) {
+    public AbstractAgentView(String filepath) {
         super(filepath);
     }
 

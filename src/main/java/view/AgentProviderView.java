@@ -5,7 +5,7 @@ import org.gnome.gtk.TextView;
 /**
  * Created by melkir on 03/03/15.
  */
-public class AgentProviderView extends AgentGenericView {
+public class AgentProviderView extends AbstractAgentView {
     // RadioGroup radioGroupNote;
     TextView textViewMusicAvailable, textViewMusicSold;
 
