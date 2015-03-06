@@ -30,7 +30,6 @@ public class ProviderController {
             album = view.getAlbum();
             name = view.getName();
             price = view.getPrice();
-            // TODO Retrieve note and genre
             genre = view.getGenre();
             note = view.getNote();
             Music music = new Music(genre, artist, album, name, price, note);
