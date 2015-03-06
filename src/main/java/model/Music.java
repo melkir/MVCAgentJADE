@@ -4,7 +4,12 @@ package model;
  * Created by melkir on 04/03/15.
  */
 public class Music {
-    private String genre, artist, album, name, price, note;
+    private String genre;
+    private String artist;
+    private String album;
+    private String name;
+    private String price;
+    private String note;
 
     public Music(String genre, String artist, String album, String name, String price, String note) {
         this.genre = genre;
@@ -13,6 +18,14 @@ public class Music {
         this.name = name;
         this.price = price;
         this.note = note;
+    }
+
+    public String getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
     }
 
     public String getGenre() {

@@ -9,7 +9,7 @@ public class PlatformManager extends Observable {
     private Agent agentSeeker, agentProvider;
 
     public void addAgent(Agent agent) throws NullAgentNameException {
-        if (agent.getName().isEmpty()) throw new NullAgentNameException("You need to enter the agent name");
+        if (agent.getName().isEmpty()) throw new NullAgentNameException("Vous devez entrer un nom d'agent");
         if (agent.getType().equals("seeker")) agentSeeker = agent;
         else agentProvider = agent;
     }

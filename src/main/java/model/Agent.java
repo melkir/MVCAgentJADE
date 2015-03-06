@@ -8,7 +8,7 @@ import java.util.Observable;
 /**
  * Created by melkir on 02/03/15.
  */
-public class Agent extends Observable {
+public abstract class Agent extends Observable {
     private final String name; // The name of the agent
     private final String type; // The type of the agent (provider, seeker)
     AbstractAgent agent;

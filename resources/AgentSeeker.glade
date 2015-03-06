@@ -38,7 +38,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkGrid" id="grid_search">
+              <object class="GtkGrid" id="grid_fields">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_bottom">5</property>
@@ -51,21 +51,6 @@
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBoxText" id="comboboxtext_genre">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="active">0</property>
-                    <items>
-                      <item translatable="yes">JAZZ</item>
-                      <item translatable="yes">ROCK</item>
-                    </items>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
                     <property name="top_attach">0</property>
                   </packing>
                 </child>
@@ -301,6 +286,9 @@
                     <property name="left_attach">0</property>
                     <property name="top_attach">3</property>
                   </packing>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
               </object>
               <packing>

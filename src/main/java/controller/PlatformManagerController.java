@@ -28,19 +28,25 @@ public class PlatformManagerController {
     private void createAgent() {
         Agent agent;
         try {
-            agent = new Agent(view.getAgentName(), view.getAgentType());
-            // Insert agent information into model
-            model.addAgent(agent);
-            // Update the console to add the agent
-            view.addAgentToConsole(agent.getAgentInfo());
-            // Show the agent corresponding view
-            if (agent.getType().equals("provider")) {
+            if (view.getAgentType().equals("provider")) {
+                agent = new AgentProvider(view.getAgentName());
+                // Insert agent information into model
+                model.addAgent(agent);
+                // Update the console to add the agent
+                view.addAgentToConsole(agent.getAgentInfo());
+                // Show the agent corresponding view
                 AgentProviderView providerView = new AgentProviderView();
                 AgentProvider providerModel = new AgentProvider(view.getAgentName());
                 new ProviderController(providerModel, providerView);
                 providerView.setTitle(agent.getAgentInfo());
                 providerView.setVisible(true);
-            } else if (agent.getType().equals("seeker")) {
+            } else if (view.getAgentType().equals("seeker")) {
+                agent = new AgentSeeker(view.getAgentName());
+                // Insert agent information into model
+                model.addAgent(agent);
+                // Update the console to add the agent
+                view.addAgentToConsole(agent.getAgentInfo());
+                // Show the agent corresponding view
                 AgentSeekerView seekerView = new AgentSeekerView();
                 AgentSeeker seekerModel = new AgentSeeker(view.getAgentName());
                 new SeekerController(seekerModel, seekerView);

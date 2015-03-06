@@ -15,6 +15,10 @@ public class AgentSeeker extends Agent {
         this.agent = new agent.AgentSeeker();
     }
 
+    public Music getPurchasedMusic(int index) {
+        return musicPurchasedList.get(index);
+    }
+
     public void addPurchasedMusic(Music music) {
         musicPurchasedList.add(music);
     }

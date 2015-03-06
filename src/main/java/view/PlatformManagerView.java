@@ -4,8 +4,6 @@ import org.gnome.gdk.Event;
 import org.gnome.gtk.*;
 import org.gnome.gtk.Button.Clicked;
 
-import java.util.Observable;
-
 /**
  * Created by melkir on 02/03/15.
  */

@@ -1,9 +1,6 @@
 package view;
 
-import org.gnome.gtk.Button;
-import org.gnome.gtk.Entry;
-import org.gnome.gtk.TextBuffer;
-import org.gnome.gtk.TextView;
+import org.gnome.gtk.*;
 
 /**
  * Created by melkir on 05/03/15.
@@ -12,6 +9,7 @@ public abstract class AgentGenericView extends AbstractView {
 
     Entry entryArtist, entryAlbum, entryName, entryPrice; // entrySearchMusic;
     Button buttonAdd;
+    ComboBoxText comboGenre;
 
     public AgentGenericView(String filepath) {
         super(filepath);
@@ -19,11 +17,25 @@ public abstract class AgentGenericView extends AbstractView {
 
     @Override
     protected void initComposant() {
+        createComboBoxGenre();
         entryArtist = (Entry) builder.getObject("entry_artist");
         entryAlbum = (Entry) builder.getObject("entry_album");
         entryName = (Entry) builder.getObject("entry_name");
         entryPrice = (Entry) builder.getObject("entry_price");
         buttonAdd = (Button) builder.getObject("button_submit");
+    }
+
+    private void createComboBoxGenre() {
+        Grid grid = (Grid) builder.getObject("grid_fields");
+        this.comboGenre = new ComboBoxText();
+        String[] listGenre = {"JAZZ", "ROCK", "METAL", "DISCO"};
+        for (String genre : listGenre) this.comboGenre.appendText(genre);
+        this.comboGenre.setActive(0);
+        grid.attach(comboGenre, 1, 0, 1, 1);
+    }
+
+    public String getGenre() {
+        return comboGenre.getActiveText();
     }
 
     public String getArtist() {
@@ -41,7 +53,6 @@ public abstract class AgentGenericView extends AbstractView {
     public String getPrice() {
         return entryPrice.getText();
     }
-
 
     public void addButtonAddClickedListener(Button.Clicked listener) {
         buttonAdd.connect(listener);

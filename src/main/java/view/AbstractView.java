@@ -40,7 +40,7 @@ public abstract class AbstractView implements Observer {
     }
 
     public void setVisible(boolean visible) {
-        if (visible) window.show();
+        if (visible) window.showAll();
         else window.hide();
     }
 

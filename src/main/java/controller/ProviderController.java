@@ -31,7 +31,7 @@ public class ProviderController {
             name = view.getName();
             price = view.getPrice();
             // TODO Retrieve note and genre
-            genre = "JAZZ";
+            genre = view.getGenre();
             note = "3";
             Music music = new Music(genre, artist, album, name, price, note);
             // Add music to model
