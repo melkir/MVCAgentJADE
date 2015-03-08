@@ -1,7 +1,5 @@
 package model;
 
-import org.gnome.gtk.ListStore;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +17,10 @@ public class AgentProvider extends Agent {
         this.agent = new agent.AgentProvider();
     }
 
-    public List<Music> getMusicByName(String name) {
+    public List<Music> getMusicByTitle(String title) {
         ArrayList<Music> res = new ArrayList<Music>();
         for (Music music : musicListAvailable) {
-            if (music.getTitre().equals(name)) res.add(music);
+            if (music.getTitre().equals(title)) res.add(music);
         }
         return res;
     }

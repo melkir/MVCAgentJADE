@@ -1,7 +1,6 @@
 package view;
 
 import model.MusicTreeModel;
-import org.gnome.gtk.ListStore;
 import org.gnome.gtk.ScrolledWindow;
 import org.gnome.gtk.TextView;
 
@@ -17,7 +16,6 @@ public class AgentProviderView extends AbstractAgentView {
 
     protected void initComposant() {
         super.initComposant();
-//        entrySearchMusic = (Entry) builder.getObject("search_music");                // Not implemented
         textViewMusicSold = (TextView) builder.getObject("music_sold");
     }
 
