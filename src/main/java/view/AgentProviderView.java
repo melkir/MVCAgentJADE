@@ -1,12 +1,15 @@
 package view;
 
+import model.MusicTreeModel;
+import org.gnome.gtk.ListStore;
+import org.gnome.gtk.ScrolledWindow;
 import org.gnome.gtk.TextView;
 
 /**
  * Created by melkir on 03/03/15.
  */
 public class AgentProviderView extends AbstractAgentView {
-    TextView textViewMusicAvailable, textViewMusicSold;
+    TextView textViewMusicSold;
 
     public AgentProviderView() {
         super("AgentProvider.glade");
@@ -15,16 +18,16 @@ public class AgentProviderView extends AbstractAgentView {
     protected void initComposant() {
         super.initComposant();
 //        entrySearchMusic = (Entry) builder.getObject("search_music");                // Not implemented
-        textViewMusicAvailable = (TextView) builder.getObject("music_available");
         textViewMusicSold = (TextView) builder.getObject("music_sold");
+    }
+
+    public void attachMusicTreeModel(MusicTreeModel model) {
+        ScrolledWindow scrolledWindow = (ScrolledWindow) builder.getObject("scrolledwindow");
+        scrolledWindow.add(new MusicTreeView(model).getTreeView());
     }
 
     public void addMusicSoldToConsole(String music) {
         addMessageToConsole(textViewMusicSold, music);
-    }
-
-    public void addMusicAvailableToConsole(String music) {
-        addMessageToConsole(textViewMusicAvailable, music);
     }
 
 }

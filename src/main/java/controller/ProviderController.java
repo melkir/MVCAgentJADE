@@ -18,6 +18,7 @@ public class ProviderController {
     public ProviderController(AgentProvider model, AgentProviderView view) {
         this.model = model;
         this.view = view;
+        this.view.attachMusicTreeModel(model.getMusicTreeModel());
         this.view.addWindowCloseEvent(new WindowCloseEvent());
         this.view.addButtonAddClickedListener(new ButtonAddClickedListener());
     }
@@ -35,8 +36,6 @@ public class ProviderController {
             Music music = new Music(genre, artist, album, name, price, note);
             // Add music to model
             model.addMusicAvailable(music);
-            // Update the console available to add the music
-            view.addMusicAvailableToConsole(music.toString());
         } catch (NullPointerException ex) {
             ex.printStackTrace();
         }

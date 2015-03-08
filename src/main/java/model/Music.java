@@ -4,13 +4,13 @@ package model;
  * Created by melkir on 04/03/15.
  */
 public class Music {
-    private String genre, artist, album, name, price, note;
+    private String genre, artist, album, titre, price, note;
 
-    public Music(String genre, String artist, String album, String name, String price, String note) {
+    public Music(String genre, String artist, String album, String titre, String price, String note) {
         this.genre = genre;
         this.artist = artist;
         this.album = album;
-        this.name = name;
+        this.titre = titre;
         this.price = price;
         this.note = note;
     }
@@ -39,12 +39,12 @@ public class Music {
         this.artist = artist;
     }
 
-    public String getName() {
-        return name;
+    public String getTitre() {
+        return titre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitre(String name) {
+        this.titre = name;
     }
 
     public String getPrice() {
@@ -64,7 +64,7 @@ public class Music {
     }
 
     public String toString() {
-        return genre + "," + name + "," + artist + "," + album + "," + price + "," + note;
+        return genre + "," + titre + "," + artist + "," + album + "," + price + "," + note;
     }
 
 }

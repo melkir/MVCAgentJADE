@@ -66,20 +66,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow" id="scrolledwindow1">
+              <object class="GtkScrolledWindow" id="scrolledwindow">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">in</property>
                 <child>
-                  <object class="GtkTextView" id="music_available">
-                    <property name="height_request">400</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="hexpand">True</property>
-                    <property name="vexpand">True</property>
-                    <property name="editable">False</property>
-                    <property name="input_purpose">alpha</property>
-                  </object>
+                  <placeholder/>
                 </child>
               </object>
               <packing>
@@ -99,8 +91,8 @@
           <object class="GtkSeparator" id="separator">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">2</property>
-            <property name="margin_right">2</property>
+            <property name="margin_left">3</property>
+            <property name="margin_right">3</property>
           </object>
           <packing>
             <property name="expand">False</property>
