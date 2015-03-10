@@ -1,6 +1,7 @@
 package view;
 
-import model.MusicTreeModel;
+import model.Music;
+import module.MusicTree;
 import org.gnome.gtk.ScrolledWindow;
 import org.gnome.gtk.TextView;
 
@@ -9,6 +10,7 @@ import org.gnome.gtk.TextView;
  */
 public class AgentProviderView extends AbstractAgentView {
     TextView textViewMusicSold;
+    MusicTree musicTree;
 
     public AgentProviderView() {
         super("AgentProvider.glade");
@@ -17,11 +19,13 @@ public class AgentProviderView extends AbstractAgentView {
     protected void initComposant() {
         super.initComposant();
         textViewMusicSold = (TextView) builder.getObject("music_sold");
+        musicTree = new MusicTree();
+        ScrolledWindow scrolledWindow = (ScrolledWindow) builder.getObject("scrolledwindow");
+        scrolledWindow.add(musicTree);
     }
 
-    public void attachMusicTreeModel(MusicTreeModel model) {
-        ScrolledWindow scrolledWindow = (ScrolledWindow) builder.getObject("scrolledwindow");
-        scrolledWindow.add(new MusicTreeView(model).getTreeView());
+    public void addMusicAvailable(Music music) {
+        musicTree.addMusic(music);
     }
 
     public void addMusicSoldToConsole(String music) {

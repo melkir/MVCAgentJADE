@@ -10,7 +10,6 @@ public class AgentProvider extends Agent {
 
     private final List<Music> musicListAvailable = new ArrayList<Music>();
     private final List<Music> musicListSold = new ArrayList<Music>();
-    private final MusicTreeModel musicTreeModel = new MusicTreeModel();
 
     public AgentProvider(String name) {
         super(name, "provider");
@@ -59,11 +58,6 @@ public class AgentProvider extends Agent {
 
     public void addMusicAvailable(Music music) {
         musicListAvailable.add(music);
-        musicTreeModel.addMusic(music);
-    }
-
-    public MusicTreeModel getMusicTreeModel() {
-        return musicTreeModel;
     }
 
     public void addMusicSold(Music music) {
