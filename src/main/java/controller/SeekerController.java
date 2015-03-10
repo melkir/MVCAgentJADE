@@ -24,7 +24,6 @@ public class SeekerController {
     private class WindowCloseEvent implements Window.DeleteEvent {
         @Override
         public boolean onDeleteEvent(Widget widget, Event event) {
-            //TODO Agent disconnect
             System.out.println(model.getAgentInfo() + " deleted");
             return false;
         }

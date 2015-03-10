@@ -1,6 +1,7 @@
 package controller;
 
-import model.Agent;
+import agent.Launcher;
+import model.AbstractAgent;
 import model.AgentProvider;
 import model.AgentSeeker;
 import model.PlatformManager;
@@ -26,10 +27,9 @@ public class PlatformManagerController {
     }
 
     private void createAgent() {
-        Agent agent;
         try {
             if (view.getAgentType().equals("provider")) {
-                agent = new AgentProvider(view.getAgentName());
+                AbstractAgent agent = new AgentProvider(view.getAgentName());
                 // Insert agent information into model
                 model.addAgent(agent);
                 // Update the console to add the agent
@@ -41,7 +41,7 @@ public class PlatformManagerController {
                 providerView.setTitle(agent.getAgentInfo());
                 providerView.setVisible(true);
             } else if (view.getAgentType().equals("seeker")) {
-                agent = new AgentSeeker(view.getAgentName());
+                AbstractAgent agent = new AgentSeeker(view.getAgentName());
                 // Insert agent information into model
                 model.addAgent(agent);
                 // Update the console to add the agent
@@ -53,8 +53,6 @@ public class PlatformManagerController {
                 seekerView.setTitle(agent.getAgentInfo());
                 seekerView.setVisible(true);
             } else System.out.println("unknown");
-            // Start the agent
-//            agent.start();
         } catch (PlatformManager.NullAgentNameException e) {
             view.displayErrorMessage(e.getMessage());
         }

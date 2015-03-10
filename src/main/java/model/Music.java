@@ -67,4 +67,8 @@ public class Music {
         return genre + "," + titre + "," + artist + "," + album + "," + price + "," + note;
     }
 
+    public String[] toStringTab() {
+        return new String[]{ genre, artist, album, titre, price, note };
+    }
+
 }

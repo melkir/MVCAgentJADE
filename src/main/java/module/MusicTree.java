@@ -19,10 +19,10 @@ public class MusicTree extends TreeView {
                 album = new DataColumnString(),
                 genre = new DataColumnString(),
                 price = new DataColumnString(),
-                note = new DataColumnString(),
+                note = new DataColumnString()
         });
 
-        insertTestData();
+//        insertTestData();
 
         this.setModel(model);
         TreeViewColumn vertical;
@@ -56,7 +56,6 @@ public class MusicTree extends TreeView {
         renderer.setAlignment(0.0f, 0.0f);
         renderer.setText(genre);
         vertical.setSortColumn(genre);
-        vertical.setExpand(true);
 
         vertical = this.appendColumn();
         vertical.setTitle("Prix");
@@ -64,7 +63,6 @@ public class MusicTree extends TreeView {
         renderer.setAlignment(0.0f, 0.0f);
         renderer.setText(price);
         vertical.setSortColumn(price);
-        vertical.setExpand(true);
 
         vertical = this.appendColumn();
         vertical.setTitle("Note");
@@ -72,7 +70,6 @@ public class MusicTree extends TreeView {
         renderer.setAlignment(0.0f, 0.0f);
         renderer.setText(note);
         vertical.setSortColumn(note);
-        vertical.setExpand(true);
     }
 
     public void addMusic(Music music) {
