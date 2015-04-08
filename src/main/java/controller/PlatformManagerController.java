@@ -1,7 +1,6 @@
 package controller;
 
 import agent.Launcher;
-import model.AbstractAgent;
 import model.AgentProvider;
 import model.AgentSeeker;
 import model.PlatformManager;
