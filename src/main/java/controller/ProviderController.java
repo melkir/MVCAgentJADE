@@ -26,7 +26,11 @@ public class ProviderController {
     public ProviderController(AgentProvider model, AgentProviderView view) {
         this.model = model;
         this.view = view;
-        try { loadMusicFromJson(); } catch (IOException e) { e.printStackTrace(); }
+        try {
+            loadMusicFromJson();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         this.view.addWindowCloseEvent(new WindowCloseEvent());
         this.view.addButtonAddClickedListener(new ButtonAddClickedListener());
     }

@@ -6,6 +6,8 @@ import jade.core.Runtime;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
+import model.AgentProvider;
+import model.AgentSeeker;
 
 /**
  * Created by melkir on 04/03/15.
