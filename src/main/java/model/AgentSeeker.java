@@ -39,7 +39,6 @@ public class AgentSeeker extends Agent {
     @Override
     protected void takeDown() {
         System.out.println(getAID().getName() + " terminating.");
-        doDelete();
     }
 
 }

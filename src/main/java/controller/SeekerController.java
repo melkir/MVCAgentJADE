@@ -1,5 +1,6 @@
 package controller;
 
+import agent.Launcher;
 import model.AgentSeeker;
 import org.gnome.gdk.Event;
 import org.gnome.gtk.Button;
@@ -15,6 +16,7 @@ public class SeekerController {
     private final AgentSeekerView view;
 
     public SeekerController(AgentSeeker model, AgentSeekerView view) {
+        Launcher.startSeeker();
         this.model = model;
         this.view = view;
         this.view.addWindowCloseEvent(new WindowCloseEvent());
@@ -24,7 +26,7 @@ public class SeekerController {
     private class WindowCloseEvent implements Window.DeleteEvent {
         @Override
         public boolean onDeleteEvent(Widget widget, Event event) {
-            System.out.println(model.getAgentInfo() + " deleted");
+//            model.doDelete();
             return false;
         }
     }

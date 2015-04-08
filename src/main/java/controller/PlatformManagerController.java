@@ -27,7 +27,6 @@ public class PlatformManagerController {
         try {
             if (view.getAgentType().equals("provider")) {
                 AgentProvider agent = new AgentProvider();
-                Launcher.startProvider();
                 // Insert agent information into model
                 model.addAgent(agent);
                 // Update the console to add the agent
@@ -40,7 +39,6 @@ public class PlatformManagerController {
                 providerView.setVisible(true);
             } else if (view.getAgentType().equals("seeker")) {
                 AgentSeeker agent = new AgentSeeker();
-                Launcher.startSeeker();
                 // Insert agent information into model
                 model.addAgent(agent);
                 // Update the console to add the agent

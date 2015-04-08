@@ -1,5 +1,6 @@
 package controller;
 
+import agent.Launcher;
 import model.AgentProvider;
 import model.Music;
 import org.apache.commons.io.IOUtils;
@@ -24,6 +25,7 @@ public class ProviderController {
     private final AgentProviderView view;
 
     public ProviderController(AgentProvider model, AgentProviderView view) {
+        Launcher.startProvider();
         this.model = model;
         this.view = view;
         try {
@@ -78,7 +80,7 @@ public class ProviderController {
     private class WindowCloseEvent implements Window.DeleteEvent {
         @Override
         public boolean onDeleteEvent(Widget widget, Event event) {
-            System.out.println(model.getAgentInfo() + " deleted");
+//            model.doDelete();
             return false;
         }
     }
