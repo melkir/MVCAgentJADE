@@ -19,10 +19,10 @@ public class Launcher {
     /**
      * Create and launch MusicSeeker and MusicProvider agent
      */
-    public Launcher(String debug) {
+    public Launcher(boolean debug) {
         Runtime runtime = Runtime.instance();
         Profile config = new ProfileImpl("localhost", 8888, null);
-        config.setParameter("gui", debug);
+        config.setParameter("gui", debug ? "true" : "false");
         mainContainer = runtime.createMainContainer(config);
     }
 
@@ -38,10 +38,18 @@ public class Launcher {
         }
     }
 
+    public static void startProvider() {
+        startAgent("agentProvider", AgentProvider.class.getName(), null);
+    }
+
+    public static void startSeeker() {
+        startAgent("agentSeeker", AgentSeeker.class.getName(), null);
+    }
+
     public static void main(String[] args) {
-        new Launcher("false");
-        startAgent("TestProvider", AgentProvider.class.getName(), null);
-        startAgent("TestSeeker", AgentSeeker.class.getName(), null);
+        new Launcher(false);
+        startAgent("agentProvider", AgentProvider.class.getName(), null);
+        startAgent("agentSeeker", AgentSeeker.class.getName(), null);
     }
 
 }

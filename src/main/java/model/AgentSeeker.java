@@ -2,6 +2,7 @@ package model;
 
 import agent.behaviours.seeker.InitialisationBehaviour;
 import jade.core.AID;
+import jade.core.Agent;
 import jade.core.behaviours.FSMBehaviour;
 
 import java.util.ArrayList;
@@ -10,14 +11,14 @@ import java.util.List;
 /**
  * Created by melkir on 02/03/15.
  */
-public class AgentSeeker extends AbstractAgent {
+public class AgentSeeker extends Agent {
 
     public static AID IDENTIFIANT = new AID("agentSeeker", AID.ISLOCALNAME);
 
     private final List<Music> musicPurchasedList = new ArrayList<Music>();
 
-    public AgentSeeker(String name) {
-        super(name, "seeker");
+    public String getAgentInfo() {
+        return IDENTIFIANT.getName();
     }
 
     @Override
@@ -37,8 +38,8 @@ public class AgentSeeker extends AbstractAgent {
 
     @Override
     protected void takeDown() {
-        super.takeDown();
         System.out.println(getAID().getName() + " terminating.");
+        doDelete();
     }
 
 }

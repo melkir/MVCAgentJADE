@@ -19,48 +19,24 @@ public class Music {
         return album;
     }
 
-    public void setAlbum(String album) {
-        this.album = album;
-    }
-
     public String getGenre() {
         return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
     }
 
     public String getArtist() {
         return artist;
     }
 
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
     public String getTitre() {
         return titre;
-    }
-
-    public void setTitre(String name) {
-        this.titre = name;
     }
 
     public String getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
     public String getNote() {
         return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
     }
 
     public String toString() {

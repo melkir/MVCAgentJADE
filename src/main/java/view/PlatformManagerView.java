@@ -8,7 +8,6 @@ import org.gnome.gtk.Button.Clicked;
  * Created by melkir on 02/03/15.
  */
 public class PlatformManagerView extends AbstractView {
-    Entry entryName;
     RadioButton radioProvider, radioSeeker;
     TextView textViewResult;
     Button buttonAdd;
@@ -25,20 +24,10 @@ public class PlatformManagerView extends AbstractView {
     }
 
     protected void initComposant() {
-        entryName = (Entry) builder.getObject("entry_name");
         radioProvider = (RadioButton) builder.getObject("radiobutton_provider");
         radioSeeker = (RadioButton) builder.getObject("radiobutton_seeker");
         buttonAdd = (Button) builder.getObject("button_add");
         textViewResult = (TextView) builder.getObject("textview_result");
-    }
-
-    /**
-     * Return the name of the agent
-     *
-     * @return String name
-     */
-    public String getAgentName() {
-        return entryName.getText();
     }
 
     /**
@@ -58,10 +47,6 @@ public class PlatformManagerView extends AbstractView {
     public void addAgentToConsole(String agent) {
         TextBuffer textBuffer = textViewResult.getBuffer();
         textBuffer.insert(textBuffer.getIterEnd(), agent + '\n');
-    }
-
-    public void addEntryActivateListener(Entry.Activate listener) {
-        entryName.connect(listener);
     }
 
     public void addButtonAddClickedListener(Clicked listener) {

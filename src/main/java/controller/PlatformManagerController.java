@@ -1,11 +1,11 @@
 package controller;
 
+import agent.Launcher;
 import model.AbstractAgent;
 import model.AgentProvider;
 import model.AgentSeeker;
 import model.PlatformManager;
 import org.gnome.gtk.Button;
-import org.gnome.gtk.Entry;
 import view.AgentProviderView;
 import view.AgentSeekerView;
 import view.PlatformManagerView;
@@ -21,33 +21,34 @@ public class PlatformManagerController {
         this.view = view;
         this.model = model;
         this.view.addButtonAddClickedListener(new ButtonAddClickedListener());
-        this.view.addEntryActivateListener(new EntryNameActivateListener());
-//        new Launcher("false");
+        new Launcher(true);
     }
 
     private void createAgent() {
         try {
             if (view.getAgentType().equals("provider")) {
-                AbstractAgent agent = new AgentProvider(view.getAgentName());
+                AgentProvider agent = new AgentProvider();
+                Launcher.startProvider();
                 // Insert agent information into model
                 model.addAgent(agent);
                 // Update the console to add the agent
                 view.addAgentToConsole(agent.getAgentInfo());
                 // Show the agent corresponding view
                 AgentProviderView providerView = new AgentProviderView();
-                AgentProvider providerModel = new AgentProvider(view.getAgentName());
+                AgentProvider providerModel = new AgentProvider();
                 new ProviderController(providerModel, providerView);
                 providerView.setTitle(agent.getAgentInfo());
                 providerView.setVisible(true);
             } else if (view.getAgentType().equals("seeker")) {
-                AbstractAgent agent = new AgentSeeker(view.getAgentName());
+                AgentSeeker agent = new AgentSeeker();
+                Launcher.startSeeker();
                 // Insert agent information into model
                 model.addAgent(agent);
                 // Update the console to add the agent
                 view.addAgentToConsole(agent.getAgentInfo());
                 // Show the agent corresponding view
                 AgentSeekerView seekerView = new AgentSeekerView();
-                AgentSeeker seekerModel = new AgentSeeker(view.getAgentName());
+                AgentSeeker seekerModel = new AgentSeeker();
                 new SeekerController(seekerModel, seekerView);
                 seekerView.setTitle(agent.getAgentInfo());
                 seekerView.setVisible(true);
@@ -63,13 +64,6 @@ public class PlatformManagerController {
     private class ButtonAddClickedListener implements Button.Clicked {
         @Override
         public void onClicked(Button button) {
-            createAgent();
-        }
-    }
-
-    private class EntryNameActivateListener implements Entry.Activate {
-        @Override
-        public void onActivate(Entry entry) {
             createAgent();
         }
     }

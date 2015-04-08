@@ -2,6 +2,7 @@ package model;
 
 import agent.behaviours.provider.InitialisationBehaviour;
 import jade.core.AID;
+import jade.core.Agent;
 import jade.core.behaviours.FSMBehaviour;
 
 import java.util.ArrayList;
@@ -10,23 +11,22 @@ import java.util.List;
 /**
  * Created by melkir on 02/03/15.
  */
-public class AgentProvider extends AbstractAgent {
+public class AgentProvider extends Agent {
 
     public static AID IDENTIFIANT = new AID("agentProvider", AID.ISLOCALNAME);
 
     private final List<Music> musicListAvailable = new ArrayList<Music>();
     private final List<Music> musicListSold = new ArrayList<Music>();
 
-    public AgentProvider(String name) {
-        super(name, "provider");
-    }
-
     @Override
     protected void setup() {
         FSMBehaviour behaviour = new FSMBehaviour(this);
         // Etats
         behaviour.registerFirstState(new InitialisationBehaviour(this), "initialisation");
+    }
 
+    public String getAgentInfo() {
+        return IDENTIFIANT.getName();
     }
 
     public List<Music> getMusicByTitle(String title) {
@@ -80,8 +80,8 @@ public class AgentProvider extends AbstractAgent {
 
     @Override
     protected void takeDown() {
-        super.takeDown();
         System.out.println(getAID().getName() + " terminating.");
+        doDelete();
     }
 
 }
