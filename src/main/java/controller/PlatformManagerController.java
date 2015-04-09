@@ -24,14 +24,18 @@ public class PlatformManagerController {
     }
 
     private void createAgent() {
-        if (view.getAgentType().equals("provider")) createAgentProvider();
-        else if (view.getAgentType().equals("seeker")) createAgentSeeker();
-        else System.out.println("unknown agent type");
+        try {
+            if (view.getAgentType().equals("provider")) createAgentProvider();
+            else if (view.getAgentType().equals("seeker")) createAgentSeeker();
+            else System.out.println("unknown agent type");
+        } catch (PlatformManager.AgentInstanceException e) {
+            view.displayErrorMessage(e.getMessage());
+        }
     }
 
-    private void createAgentProvider() {
+    private void createAgentProvider() throws PlatformManager.AgentInstanceException {
         AgentProvider agent = new AgentProvider();
-        model.setProvider(agent);
+        model.addProvider();
         // Update the console to add the agent
         view.addAgentToConsole(agent.getAgentName());
         // Show the agent corresponding view
@@ -41,9 +45,9 @@ public class PlatformManagerController {
         providerView.setVisible(true);
     }
 
-    private void createAgentSeeker() {
+    private void createAgentSeeker() throws PlatformManager.AgentInstanceException {
         AgentSeeker agent = new AgentSeeker();
-        model.setSeeker(agent);
+        model.addSeeker();
         // Update the console to add the agent
         view.addAgentToConsole(agent.getAgentName());
         // Show the agent corresponding view

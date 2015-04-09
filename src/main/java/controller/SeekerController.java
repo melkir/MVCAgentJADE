@@ -39,7 +39,7 @@ public class SeekerController {
     private class WindowCloseEvent implements Window.DeleteEvent {
         @Override
         public boolean onDeleteEvent(Widget widget, Event event) {
-//            model.doDelete();
+            model.doDelete();
             return false;
         }
     }

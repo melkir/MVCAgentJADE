@@ -5,23 +5,22 @@ package model;
  */
 public class PlatformManager {
 
-    AgentProvider provider;
-    AgentSeeker seeker;
+    boolean provider, seeker;
 
-    public AgentProvider getProvider() {
-        return provider;
+    public void addProvider() throws AgentInstanceException {
+        if (provider) throw new AgentInstanceException("Only one instance of Agent Provider is allowed");
+        provider = true;
     }
 
-    public void setProvider(AgentProvider provider) {
-        this.provider = provider;
+    public void addSeeker() throws AgentInstanceException {
+        if (seeker) throw new AgentInstanceException("Only one instance of Agent Seeker is allowed");
+        seeker = true;
     }
 
-    public AgentSeeker getSeeker() {
-        return seeker;
-    }
-
-    public void setSeeker(AgentSeeker seeker) {
-        this.seeker = seeker;
+    public class AgentInstanceException extends Exception {
+        public AgentInstanceException(String message) {
+            super(message);
+        }
     }
 
 }
