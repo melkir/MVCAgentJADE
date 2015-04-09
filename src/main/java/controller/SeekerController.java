@@ -8,6 +8,8 @@ import org.gnome.gtk.Widget;
 import org.gnome.gtk.Window;
 import view.AgentSeekerView;
 
+import java.util.Arrays;
+
 /**
  * Created by melkir on 03/03/15.
  */
@@ -23,6 +25,17 @@ public class SeekerController {
         this.view.addButtonAddClickedListener(new ButtonAddClickedListener());
     }
 
+    private void initModel() {
+        model.setGenre(view.getGenre());
+        model.setArtist(view.getArtist());
+        model.setAlbum(view.getAlbum());
+        model.setTitle(view.getName());
+        model.setPrice(view.getPrice());
+        model.setNbmusic(view.getNbMusic());
+        model.setBudget(view.getBudget());
+        model.setNote(view.getNote());
+    }
+
     private class WindowCloseEvent implements Window.DeleteEvent {
         @Override
         public boolean onDeleteEvent(Widget widget, Event event) {
@@ -34,7 +47,8 @@ public class SeekerController {
     private class ButtonAddClickedListener implements Button.Clicked {
         @Override
         public void onClicked(Button button) {
-            // TODO Retrieve musics
+            initModel();
+            System.out.println(model.toString());
         }
     }
 

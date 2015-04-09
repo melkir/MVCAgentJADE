@@ -40,7 +40,7 @@ public class Music {
     }
 
     public String toString() {
-        return genre + "," + titre + "," + artist + "," + album + "," + price + "," + note;
+        return genre + ";" + titre + ";" + artist + ";" + album + ";" + price + ";" + note;
     }
 
     public String[] toStringTab() {

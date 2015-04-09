@@ -17,12 +17,8 @@ import java.util.List;
 public class AgentSeeker extends Agent {
 
     public static AID IDENTIFIANT = new AID("agentSeeker", AID.ISLOCALNAME);
-
     private final List<Music> musicPurchasedList = new ArrayList<Music>();
-
-    public String getAgentInfo() {
-        return IDENTIFIANT.getName();
-    }
+    String genre, artist, album, title, price, nbmusic, budget, note;
 
     @Override
     protected void setup() {
@@ -41,6 +37,47 @@ public class AgentSeeker extends Agent {
         addBehaviour(behaviour);
     }
 
+    public String getAgentName() {
+        return IDENTIFIANT.getName();
+    }
+
+    @Override
+    protected void takeDown() {
+        System.out.println(getAID().getName() + " terminating.");
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public void setNbmusic(String nbmusic) {
+        this.nbmusic = nbmusic;
+    }
+
+    public void setBudget(String budget) {
+        this.budget = budget;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
     public Music getPurchasedMusic(int index) {
         return musicPurchasedList.get(index);
     }
@@ -49,9 +86,8 @@ public class AgentSeeker extends Agent {
         musicPurchasedList.add(music);
     }
 
-    @Override
-    protected void takeDown() {
-        System.out.println(getAID().getName() + " terminating.");
+    public String[] getCriteriaList() {
+        return new String[] {note, budget, nbmusic, price, title, album, artist, genre};
     }
 
 }

@@ -34,7 +34,7 @@ public class AgentProvider extends Agent {
         addBehaviour(behaviour);
     }
 
-    public String getAgentInfo() {
+    public String getAgentName() {
         return IDENTIFIANT.getName();
     }
 

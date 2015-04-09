@@ -24,35 +24,33 @@ public class PlatformManagerController {
     }
 
     private void createAgent() {
-        try {
-            if (view.getAgentType().equals("provider")) {
-                AgentProvider agent = new AgentProvider();
-                // Insert agent information into model
-                model.addAgent(agent);
-                // Update the console to add the agent
-                view.addAgentToConsole(agent.getAgentInfo());
-                // Show the agent corresponding view
-                AgentProviderView providerView = new AgentProviderView();
-                AgentProvider providerModel = new AgentProvider();
-                new ProviderController(providerModel, providerView);
-                providerView.setTitle(agent.getAgentInfo());
-                providerView.setVisible(true);
-            } else if (view.getAgentType().equals("seeker")) {
-                AgentSeeker agent = new AgentSeeker();
-                // Insert agent information into model
-                model.addAgent(agent);
-                // Update the console to add the agent
-                view.addAgentToConsole(agent.getAgentInfo());
-                // Show the agent corresponding view
-                AgentSeekerView seekerView = new AgentSeekerView();
-                AgentSeeker seekerModel = new AgentSeeker();
-                new SeekerController(seekerModel, seekerView);
-                seekerView.setTitle(agent.getAgentInfo());
-                seekerView.setVisible(true);
-            } else System.out.println("unknown");
-        } catch (PlatformManager.NullAgentNameException e) {
-            view.displayErrorMessage(e.getMessage());
-        }
+        if (view.getAgentType().equals("provider")) createAgentProvider();
+        else if (view.getAgentType().equals("seeker")) createAgentSeeker();
+        else System.out.println("unknown agent type");
+    }
+
+    private void createAgentProvider() {
+        AgentProvider agent = new AgentProvider();
+        model.setProvider(agent);
+        // Update the console to add the agent
+        view.addAgentToConsole(agent.getAgentName());
+        // Show the agent corresponding view
+        AgentProviderView providerView = new AgentProviderView();
+        new ProviderController(agent, providerView);
+        providerView.setTitle(agent.getAgentName());
+        providerView.setVisible(true);
+    }
+
+    private void createAgentSeeker() {
+        AgentSeeker agent = new AgentSeeker();
+        model.setSeeker(agent);
+        // Update the console to add the agent
+        view.addAgentToConsole(agent.getAgentName());
+        // Show the agent corresponding view
+        AgentSeekerView seekerView = new AgentSeekerView();
+        new SeekerController(agent, seekerView);
+        seekerView.setTitle(agent.getAgentName());
+        seekerView.setVisible(true);
     }
 
     /**

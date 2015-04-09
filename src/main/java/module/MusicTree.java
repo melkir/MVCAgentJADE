@@ -22,8 +22,6 @@ public class MusicTree extends TreeView {
                 note = new DataColumnString()
         });
 
-//        insertTestData();
-
         this.setModel(model);
         TreeViewColumn vertical;
 
@@ -82,7 +80,7 @@ public class MusicTree extends TreeView {
         model.setValue(row, note, music.getNote());
     }
 
-    private void insertTestData() {
+    private void testData() {
         Music music1 = new Music("Genre", "Artist", "Album", "Titre", "10", "3");
         Music music2 = new Music("Genre1", "Artist1", "Album1", "Titre1", "20", "2");
         addMusic(music1);

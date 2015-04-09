@@ -5,18 +5,23 @@ package model;
  */
 public class PlatformManager {
 
-    public void addAgent(AgentProvider agent) throws NullAgentNameException {
-//        if (agent.getModelName().isEmpty()) throw new NullAgentNameException("Vous devez entrer un nom d'agent");
+    AgentProvider provider;
+    AgentSeeker seeker;
+
+    public AgentProvider getProvider() {
+        return provider;
     }
 
-    public void addAgent(AgentSeeker agent) throws NullAgentNameException {
-//        if (agent.getModelName().isEmpty()) throw new NullAgentNameException("Vous devez entrer un nom d'agent");
+    public void setProvider(AgentProvider provider) {
+        this.provider = provider;
     }
 
-    public class NullAgentNameException extends Exception {
-        public NullAgentNameException(String message) {
-            super(message);
-        }
+    public AgentSeeker getSeeker() {
+        return seeker;
+    }
+
+    public void setSeeker(AgentSeeker seeker) {
+        this.seeker = seeker;
     }
 
 }

@@ -22,6 +22,14 @@ public class AgentSeekerView extends AbstractAgentView {
         entryMaxBudget = (Entry) builder.getObject("entry_budget");
     }
 
+    public String getNbMusic() {
+        return entryNbMusic.getText();
+    }
+
+    public String getBudget() {
+        return entryMaxBudget.getText();
+    }
+
     public void addMusicPurchasedToConsole(String music) {
         TextBuffer textBuffer = textViewMusicFound.getBuffer();
         textBuffer.insert(textBuffer.getIterEnd(), music + '\n');
