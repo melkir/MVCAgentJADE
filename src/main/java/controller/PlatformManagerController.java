@@ -34,8 +34,8 @@ public class PlatformManagerController {
     }
 
     private void createAgentProvider() throws PlatformManager.AgentInstanceException {
-        AgentProvider agent = new AgentProvider();
         model.addProvider();
+        AgentProvider agent = new AgentProvider();
         // Update the console to add the agent
         view.addAgentToConsole(agent.getAgentName());
         // Show the agent corresponding view
@@ -46,8 +46,8 @@ public class PlatformManagerController {
     }
 
     private void createAgentSeeker() throws PlatformManager.AgentInstanceException {
-        AgentSeeker agent = new AgentSeeker();
         model.addSeeker();
+        AgentSeeker agent = new AgentSeeker();
         // Update the console to add the agent
         view.addAgentToConsole(agent.getAgentName());
         // Show the agent corresponding view

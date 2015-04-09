@@ -25,7 +25,6 @@ public class ProviderController {
     private final AgentProviderView view;
 
     public ProviderController(AgentProvider model, AgentProviderView view) {
-        Launcher.startProvider();
         this.model = model;
         this.view = view;
         try {
@@ -35,6 +34,7 @@ public class ProviderController {
         }
         this.view.addWindowCloseEvent(new WindowCloseEvent());
         this.view.addButtonAddClickedListener(new ButtonAddClickedListener());
+        Launcher.startAgent("agentProvider", model);
     }
 
     private void loadMusicFromJson() throws IOException {

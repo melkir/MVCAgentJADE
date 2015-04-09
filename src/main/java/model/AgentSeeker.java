@@ -37,13 +37,13 @@ public class AgentSeeker extends Agent {
         addBehaviour(behaviour);
     }
 
-    public String getAgentName() {
-        return IDENTIFIANT.getName();
-    }
-
     @Override
     protected void takeDown() {
         System.out.println(getAID().getName() + " terminating.");
+    }
+
+    public String getAgentName() {
+        return IDENTIFIANT.getName();
     }
 
     public void setGenre(String genre) {
@@ -87,7 +87,7 @@ public class AgentSeeker extends Agent {
     }
 
     public String[] getCriteriaList() {
-        return new String[] {note, budget, nbmusic, price, title, album, artist, genre};
+        return new String[]{note, budget, nbmusic, price, title, album, artist, genre};
     }
 
 }

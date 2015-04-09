@@ -8,8 +8,6 @@ import org.gnome.gtk.Widget;
 import org.gnome.gtk.Window;
 import view.AgentSeekerView;
 
-import java.util.Arrays;
-
 /**
  * Created by melkir on 03/03/15.
  */
@@ -18,11 +16,11 @@ public class SeekerController {
     private final AgentSeekerView view;
 
     public SeekerController(AgentSeeker model, AgentSeekerView view) {
-        Launcher.startSeeker();
         this.model = model;
         this.view = view;
         this.view.addWindowCloseEvent(new WindowCloseEvent());
         this.view.addButtonAddClickedListener(new ButtonAddClickedListener());
+        Launcher.startAgent("agentSeeker", model);
     }
 
     private void initModel() {

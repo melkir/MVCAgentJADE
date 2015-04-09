@@ -22,7 +22,7 @@ public class Start extends OneShotBehaviour {
     public void action() {
         agent.doWait(20000);
         ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
-        message.setContent(agent.toString());
+        message.setContent(Arrays.toString(agent.getCriteriaList()));
         message.addReceiver(AgentProvider.IDENTIFIANT);
         agent.send(message);
     }
