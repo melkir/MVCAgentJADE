@@ -1,6 +1,8 @@
 package model;
 
-import agent.behaviours.provider.InitialisationBehaviour;
+import agent.behaviours.provider.FinTransaction;
+import agent.behaviours.provider.Initialisation;
+import agent.behaviours.provider.Transaction;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.FSMBehaviour;
@@ -22,7 +24,14 @@ public class AgentProvider extends Agent {
     protected void setup() {
         FSMBehaviour behaviour = new FSMBehaviour(this);
         // Etats
-        behaviour.registerFirstState(new InitialisationBehaviour(this), "initialisation");
+        behaviour.registerFirstState(new Initialisation(this), "initialisation");
+        behaviour.registerState(new Transaction(this), "transaction");
+        behaviour.registerLastState(new FinTransaction(this), "fin");
+        // Transitions
+        behaviour.registerDefaultTransition("initialisation", "transaction");
+        behaviour.registerTransition("transaction", "fin", 0);
+
+        addBehaviour(behaviour);
     }
 
     public String getAgentInfo() {
@@ -76,6 +85,10 @@ public class AgentProvider extends Agent {
     public void addMusicSold(Music music) {
         musicListAvailable.remove(music);
         musicListSold.add(music);
+    }
+
+    public Music[] getMusicListAvailable() {
+        return musicListAvailable.toArray(new Music[musicListAvailable.size()]);
     }
 
     @Override

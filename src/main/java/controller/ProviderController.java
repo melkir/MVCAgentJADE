@@ -80,7 +80,7 @@ public class ProviderController {
     private class WindowCloseEvent implements Window.DeleteEvent {
         @Override
         public boolean onDeleteEvent(Widget widget, Event event) {
-//            model.doDelete();
+//            model.deleteAgent();
             return false;
         }
     }

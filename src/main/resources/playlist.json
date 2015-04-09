@@ -1,0 +1,84 @@
+{
+  "list": [
+    {
+      "genre": "ROCK",
+      "title": "Madness",
+      "artist": "Muse",
+      "album": "The 2nd Law",
+      "price": "2",
+      "note": "5"
+    },
+    {
+      "genre": "ROCK",
+      "title": "Weapon of Mass Refunktion",
+      "artist": "Prototyperaptor",
+      "album": "3-1",
+      "price": "5",
+      "note": "5"
+    },
+    {
+      "genre": "JAZZ",
+      "title": "3h16",
+      "artist": "Danger",
+      "album": "09/17 2007 - EP",
+      "price": "5",
+      "note": "5"
+    },
+    {
+      "genre": "JAZZ",
+      "title": "21st Century Breakdown",
+      "artist": "Green Day",
+      "album": "21st Century Breakdown",
+      "price": "3",
+      "note": "3"
+    },
+    {
+      "genre": "ROCK",
+      "title": "Know Your Enemy",
+      "artist": "Green Day",
+      "album": "21st Century Breakdown",
+      "price": "2",
+      "note": "2"
+    },
+    {
+      "genre": "ROCK",
+      "title": "Christian's Inferno",
+      "artist": "Green Day",
+      "album": "21st Century Breakdown",
+      "price": "10",
+      "note": "1"
+    },
+    {
+      "genre": "ROCK",
+      "title": "21 Guns",
+      "artist": "Green Day",
+      "album": "21st Century Breakdown",
+      "price": "1",
+      "note": "4"
+    },
+    {
+      "genre": "METAL",
+      "title": "50K (Original Mix)",
+      "artist": "Calvertron",
+      "album": "50,000 Watts EP",
+      "price": "1",
+      "note": "2"
+    },
+    {
+      "genre": "METAL",
+      "title": "Gangnam Style",
+      "artist": "K-Step",
+      "album": "50 Shades of Dubstep",
+      "price": "4",
+      "note": "3"
+    },
+    {
+      "genre": "METAL",
+      "title": "99 Problems",
+      "artist": "JAY Z",
+      "album": "Dirt Off Your Shoulder",
+      "price": "6",
+      "note": "2"
+    }
+  ]
+}

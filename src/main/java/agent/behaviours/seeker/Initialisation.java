@@ -1,23 +1,23 @@
-package agent.behaviours.provider;
+package agent.behaviours.seeker;
 
 import agent.Logger;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
-import model.AgentProvider;
+import model.AgentSeeker;
 
 /**
  * Created by melkir on 08/04/15.
  */
-public class InitialisationBehaviour extends OneShotBehaviour {
-    AgentProvider agent;
+public class Initialisation extends OneShotBehaviour {
+    AgentSeeker agent;
 
-    public InitialisationBehaviour(AgentProvider agent) {
+    public Initialisation(AgentSeeker agent) {
         this.agent = agent;
     }
 
     @Override
     public void action() {
-        // Attente d'un message de l'agent Seeker pour commencer la transaction
+        // Attente d'un message de l'agent Provider contenant la liste des musiques
         agent.doWait();
         ACLMessage message = agent.receive();
         Logger.log(message);
