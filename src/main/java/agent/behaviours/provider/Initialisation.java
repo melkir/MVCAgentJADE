@@ -5,6 +5,7 @@ import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import model.AgentProvider;
 import model.AgentSeeker;
+import model.CriteriaList;
 
 /**
  * Created by melkir on 08/04/15.
@@ -22,8 +23,9 @@ public class Initialisation extends OneShotBehaviour {
         agent.doWait();
         ACLMessage message = agent.receive();
         Logger.log(message);
-        ACLMessage reponse = new ACLMessage(ACLMessage.INFORM);
-        reponse.setContent("Je suis dispo");
+        CriteriaList criteriaList = agent.convertCriteriaXmlToObject(message.getContent());
+        ACLMessage reponse = new ACLMessage(ACLMessage.PROPOSE);
+        reponse.setContent("Criteria list received");
         reponse.addReceiver(AgentSeeker.IDENTIFIANT);
         agent.send(reponse);
     }

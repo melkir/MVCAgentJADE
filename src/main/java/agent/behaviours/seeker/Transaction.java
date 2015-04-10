@@ -20,7 +20,7 @@ public class Transaction extends OneShotBehaviour {
 
     @Override
     public void action() {
-        ACLMessage message = new ACLMessage(ACLMessage.PROPOSE);
+        ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
         message.setContent("I wanna buy this !");
         message.addReceiver(AgentProvider.IDENTIFIANT);
         agent.send(message);

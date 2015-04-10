@@ -2,6 +2,7 @@ package controller;
 
 import agent.Launcher;
 import model.AgentSeeker;
+import model.CriteriaList;
 import org.gnome.gdk.Event;
 import org.gnome.gtk.Button;
 import org.gnome.gtk.Widget;
@@ -24,18 +25,19 @@ public class SeekerController {
     }
 
     private void initModel() {
-        model.setGenre(view.getGenre());
-        model.setArtist(view.getArtist());
-        model.setAlbum(view.getAlbum());
-        model.setTitle(view.getName());
-        model.setPrice(view.getPrice());
-        model.setNbmusic(view.getNbMusic());
-        model.setBudget(view.getBudget());
-        model.setNote(view.getNote());
+        CriteriaList criteriaList = new CriteriaList();
+        criteriaList.setGenre(view.getGenre());
+        criteriaList.setArtist(view.getArtist());
+        criteriaList.setAlbum(view.getAlbum());
+        criteriaList.setTitle(view.getName());
+        criteriaList.setPrice(view.getPrice());
+        criteriaList.setNbmusic(view.getNbMusic());
+        criteriaList.setBudget(view.getBudget());
+        criteriaList.setNote(view.getNote());
+        model.setCriteriaList(criteriaList);
     }
 
     private class WindowCloseEvent implements Window.DeleteEvent {
-        @Override
         public boolean onDeleteEvent(Widget widget, Event event) {
             model.doDelete();
             return false;
@@ -43,7 +45,6 @@ public class SeekerController {
     }
 
     private class ButtonAddClickedListener implements Button.Clicked {
-        @Override
         public void onClicked(Button button) {
             initModel();
             System.out.println(model.toString());

@@ -4,6 +4,8 @@ import agent.behaviours.seeker.FinTransaction;
 import agent.behaviours.seeker.Initialisation;
 import agent.behaviours.seeker.Start;
 import agent.behaviours.seeker.Transaction;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.StaxDriver;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.FSMBehaviour;
@@ -18,7 +20,7 @@ public class AgentSeeker extends Agent {
 
     public static AID IDENTIFIANT = new AID("agentSeeker", AID.ISLOCALNAME);
     private final List<Music> musicPurchasedList = new ArrayList<Music>();
-    String genre, artist, album, title, price, nbmusic, budget, note;
+    private CriteriaList criteriaList;
 
     @Override
     protected void setup() {
@@ -46,38 +48,6 @@ public class AgentSeeker extends Agent {
         return IDENTIFIANT.getName();
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
-    public void setAlbum(String album) {
-        this.album = album;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public void setNbmusic(String nbmusic) {
-        this.nbmusic = nbmusic;
-    }
-
-    public void setBudget(String budget) {
-        this.budget = budget;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
-
     public Music getPurchasedMusic(int index) {
         return musicPurchasedList.get(index);
     }
@@ -86,8 +56,14 @@ public class AgentSeeker extends Agent {
         musicPurchasedList.add(music);
     }
 
-    public String[] getCriteriaList() {
-        return new String[]{note, budget, nbmusic, price, title, album, artist, genre};
+    public String getXmlCriteriaList() {
+        XStream xstream = new XStream(new StaxDriver());
+        xstream.alias("criteria", CriteriaList.class);
+        return xstream.toXML(criteriaList);
+    }
+
+    public void setCriteriaList(CriteriaList criteriaList) {
+        this.criteriaList = criteriaList;
     }
 
 }

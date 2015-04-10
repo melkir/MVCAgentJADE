@@ -78,7 +78,6 @@ public class ProviderController {
     }
 
     private class WindowCloseEvent implements Window.DeleteEvent {
-        @Override
         public boolean onDeleteEvent(Widget widget, Event event) {
             model.doDelete();
             return false;
@@ -86,7 +85,6 @@ public class ProviderController {
     }
 
     private class ButtonAddClickedListener implements Button.Clicked {
-        @Override
         public void onClicked(Button button) {
             createMusic();
         }

@@ -61,7 +61,6 @@ public class PlatformManagerController {
      * Create a new agent and show the corresponding view
      */
     private class ButtonAddClickedListener implements Button.Clicked {
-        @Override
         public void onClicked(Button button) {
             createAgent();
         }

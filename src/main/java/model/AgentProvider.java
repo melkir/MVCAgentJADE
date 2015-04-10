@@ -3,6 +3,8 @@ package model;
 import agent.behaviours.provider.FinTransaction;
 import agent.behaviours.provider.Initialisation;
 import agent.behaviours.provider.Transaction;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.StaxDriver;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.FSMBehaviour;
@@ -32,6 +34,11 @@ public class AgentProvider extends Agent {
         behaviour.registerTransition("transaction", "fin", 0);
 
         addBehaviour(behaviour);
+    }
+
+    @Override
+    protected void takeDown() {
+        System.out.println(getAID().getName() + " terminating.");
     }
 
     public String getAgentName() {
@@ -91,9 +98,10 @@ public class AgentProvider extends Agent {
         return musicListAvailable.toArray(new Music[musicListAvailable.size()]);
     }
 
-    @Override
-    protected void takeDown() {
-        System.out.println(getAID().getName() + " terminating.");
+    public CriteriaList convertCriteriaXmlToObject(String xml) {
+        XStream xstream = new XStream(new StaxDriver());
+        xstream.alias("criteria", CriteriaList.class);
+        return (CriteriaList) xstream.fromXML(xml);
     }
 
 }
