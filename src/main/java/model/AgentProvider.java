@@ -45,6 +45,27 @@ public class AgentProvider extends Agent {
         return IDENTIFIANT.getName();
     }
 
+    public List<Music> getMusicsByCrit(CriteriaList list) {
+        ArrayList<Music> res = new ArrayList<Music>();
+        for (Music music : musicListAvailable) {
+            if (isFromCriteriaList(music, list)) res.add(music);
+        }
+        return res;
+    }
+
+    public boolean isFromCriteriaList(Music music, CriteriaList list) {
+        boolean title = !isNullOrEmpty(list.getTitle()) & music.getTitre().equals(list.getTitle());
+        boolean album = !isNullOrEmpty(list.getAlbum()) & music.getAlbum().equals(list.getAlbum());
+        boolean genre = !isNullOrEmpty(list.getGenre()) & music.getGenre().equals(list.getGenre());
+        boolean artist = !isNullOrEmpty(list.getArtist()) & music.getArtist().equals(list.getArtist());
+        boolean note = !isNullOrEmpty(list.getNote()) & Integer.parseInt(music.getNote()) >= Integer.parseInt(list.getNote());
+        return note || genre || artist || album || title;
+    }
+
+    public boolean isNullOrEmpty(String str) {
+        return str != null && str.isEmpty();
+    }
+
     public List<Music> getMusicByTitle(String title) {
         ArrayList<Music> res = new ArrayList<Music>();
         for (Music music : musicListAvailable) {
@@ -92,10 +113,6 @@ public class AgentProvider extends Agent {
     public void addMusicSold(Music music) {
         musicListAvailable.remove(music);
         musicListSold.add(music);
-    }
-
-    public Music[] getMusicListAvailable() {
-        return musicListAvailable.toArray(new Music[musicListAvailable.size()]);
     }
 
     public CriteriaList convertCriteriaXmlToObject(String xml) {

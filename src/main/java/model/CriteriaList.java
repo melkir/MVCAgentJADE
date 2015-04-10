@@ -5,7 +5,7 @@ package model;
  */
 public class CriteriaList {
 
-    String genre, artist, album, title, price, nbmusic, budget, note;
+    String genre, artist, album, title, nbmusic, budget, note;
 
     public String getGenre() {
         return genre;
@@ -37,14 +37,6 @@ public class CriteriaList {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
     }
 
     public String getNbmusic() {
