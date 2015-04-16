@@ -10,6 +10,7 @@ import jade.core.Agent;
 import jade.core.behaviours.FSMBehaviour;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -45,57 +46,16 @@ public class AgentProvider extends Agent {
         return IDENTIFIANT.getName();
     }
 
-    public List<Music> getMusicsByCrit(CriteriaList list) {
-        ArrayList<Music> res = new ArrayList<Music>();
+    public List<ScoredMusic> getMusicsScoredByCL(CriteriaList list) {
+        ArrayList<ScoredMusic> scoredMusics = new ArrayList<ScoredMusic>();
+        ScoredMusic sc;
         for (Music music : musicListAvailable) {
-            if (isFromCriteriaList(music, list)) res.add(music);
+            sc = new ScoredMusic(music, list);
+            scoredMusics.add(sc);
         }
-        return res;
-    }
-
-    public boolean isFromCriteriaList(Music music, CriteriaList list) {
-        boolean title = !isNullOrEmpty(list.getTitle()) & music.getTitre().equals(list.getTitle());
-        boolean album = !isNullOrEmpty(list.getAlbum()) & music.getAlbum().equals(list.getAlbum());
-        boolean genre = !isNullOrEmpty(list.getGenre()) & music.getGenre().equals(list.getGenre());
-        boolean artist = !isNullOrEmpty(list.getArtist()) & music.getArtist().equals(list.getArtist());
-        boolean note = !isNullOrEmpty(list.getNote()) & Integer.parseInt(music.getNote()) >= Integer.parseInt(list.getNote());
-        return note || genre || artist || album || title;
-    }
-
-    public boolean isNullOrEmpty(String str) {
-        return str != null && str.isEmpty();
-    }
-
-    public List<Music> getMusicByTitle(String title) {
-        ArrayList<Music> res = new ArrayList<Music>();
-        for (Music music : musicListAvailable) {
-            if (music.getTitre().equals(title)) res.add(music);
-        }
-        return res;
-    }
-
-    public List<Music> getMusicByArtist(String artist) {
-        ArrayList<Music> res = new ArrayList<Music>();
-        for (Music music : musicListAvailable) {
-            if (music.getArtist().equals(artist)) res.add(music);
-        }
-        return res;
-    }
-
-    public List<Music> getMusicByAlbum(String album) {
-        ArrayList<Music> res = new ArrayList<Music>();
-        for (Music music : musicListAvailable) {
-            if (music.getAlbum().equals(album)) res.add(music);
-        }
-        return res;
-    }
-
-    public List<Music> getMusicByGenre(String genre) {
-        ArrayList<Music> res = new ArrayList<Music>();
-        for (Music music : musicListAvailable) {
-            if (music.getGenre().equals(genre)) res.add(music);
-        }
-        return res;
+        // sort by revelance and descending order
+        Collections.sort(scoredMusics, Collections.reverseOrder());
+        return scoredMusics;
     }
 
     public Music getMusicByIndex(int index) {
@@ -115,7 +75,13 @@ public class AgentProvider extends Agent {
         musicListSold.add(music);
     }
 
-    public CriteriaList convertCriteriaXmlToObject(String xml) {
+    public String getXmlFromMusics(List<Music> musics) {
+        XStream xs = new XStream(new StaxDriver());
+        xs.alias("musics", List.class);
+        return xs.toXML(musics);
+    }
+
+    public CriteriaList getCriteriaList(String xml) {
         XStream xstream = new XStream(new StaxDriver());
         xstream.alias("criteria", CriteriaList.class);
         return (CriteriaList) xstream.fromXML(xml);

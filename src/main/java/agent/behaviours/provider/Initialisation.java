@@ -6,6 +6,9 @@ import jade.lang.acl.ACLMessage;
 import model.AgentProvider;
 import model.AgentSeeker;
 import model.CriteriaList;
+import model.ScoredMusic;
+
+import java.util.List;
 
 /**
  * Created by melkir on 08/04/15.
@@ -23,9 +26,15 @@ public class Initialisation extends OneShotBehaviour {
         agent.doWait();
         ACLMessage message = agent.receive();
         Logger.log(message);
-        CriteriaList criteriaList = agent.convertCriteriaXmlToObject(message.getContent());
+        CriteriaList crits = agent.getCriteriaList(message.getContent());
+        List<ScoredMusic> scoredMusics = agent.getMusicsScoredByCL(crits);
+        for (ScoredMusic sc : scoredMusics) System.out.println(sc.toString());
+
+//        String xmlMusics;
+//        if (musics == null) xmlMusics = "Vide";
+//        else xmlMusics = agent.getXmlFromMusics(musics);
         ACLMessage reponse = new ACLMessage(ACLMessage.PROPOSE);
-        reponse.setContent("Criteria list received");
+        reponse.setContent("Hello!");
         reponse.addReceiver(AgentSeeker.IDENTIFIANT);
         agent.send(reponse);
     }

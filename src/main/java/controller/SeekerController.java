@@ -30,7 +30,6 @@ public class SeekerController {
         criteriaList.setArtist(view.getArtist());
         criteriaList.setAlbum(view.getAlbum());
         criteriaList.setTitle(view.getName());
-        criteriaList.setPrice(view.getPrice());
         criteriaList.setNbmusic(view.getNbMusic());
         criteriaList.setBudget(view.getBudget());
         criteriaList.setNote(view.getNote());

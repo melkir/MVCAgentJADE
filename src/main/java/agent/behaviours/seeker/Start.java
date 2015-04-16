@@ -5,8 +5,6 @@ import jade.lang.acl.ACLMessage;
 import model.AgentProvider;
 import model.AgentSeeker;
 
-import java.util.Arrays;
-
 /**
  * Created by melkir on 09/04/15.
  */
@@ -20,7 +18,7 @@ public class Start extends OneShotBehaviour {
 
     @Override
     public void action() {
-        agent.doWait(20000);
+        agent.doWait(10000);
         ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
         message.setContent(agent.getXmlCriteriaList());
         message.addReceiver(AgentProvider.IDENTIFIANT);
