@@ -7,6 +7,9 @@ public class ScoredMusic implements Comparable<ScoredMusic> {
     private int revelanceScore = 0;
     private Music music;
 
+    public ScoredMusic() {
+    }
+
     public ScoredMusic(Music music, CriteriaList crit) {
         this.music = music;
         calculateRevelance(crit);
@@ -31,7 +34,6 @@ public class ScoredMusic implements Comparable<ScoredMusic> {
     }
 
     public int compareTo(ScoredMusic other) {
-        // descending order, most revelance to less revelance
         return Integer.compare(this.getRevelanceScore(), other.getRevelanceScore());
     }
 

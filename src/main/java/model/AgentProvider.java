@@ -51,7 +51,7 @@ public class AgentProvider extends Agent {
         ScoredMusic sc;
         for (Music music : musicListAvailable) {
             sc = new ScoredMusic(music, list);
-            scoredMusics.add(sc);
+            if (sc.getRevelanceScore() >= 1) scoredMusics.add(sc);
         }
         // sort by revelance and descending order
         Collections.sort(scoredMusics, Collections.reverseOrder());
@@ -79,6 +79,12 @@ public class AgentProvider extends Agent {
         XStream xs = new XStream(new StaxDriver());
         xs.alias("musics", List.class);
         return xs.toXML(musics);
+    }
+
+    public String getXmlFromScoredMusic(List<ScoredMusic> scoredMusics) {
+        XStream xs = new XStream(new StaxDriver());
+        xs.alias("ScoredMusics", List.class);
+        return xs.toXML(scoredMusics);
     }
 
     public CriteriaList getCriteriaList(String xml) {

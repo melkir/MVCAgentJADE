@@ -46,7 +46,7 @@ public class SeekerController {
     private class ButtonAddClickedListener implements Button.Clicked {
         public void onClicked(Button button) {
             initModel();
-            System.out.println(model.toString());
+            model.doWake();
         }
     }
 

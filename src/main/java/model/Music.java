@@ -4,15 +4,26 @@ package model;
  * Created by melkir on 04/03/15.
  */
 public class Music {
+    private static int autoincrement = 0;
     private String genre, artist, album, titre, price, note;
+    private int id;
+
+    public Music() {
+        id = ++autoincrement;
+    }
 
     public Music(String genre, String artist, String album, String titre, String price, String note) {
+        this.id = ++autoincrement;
         this.genre = genre;
         this.artist = artist;
         this.album = album;
         this.titre = titre;
         this.price = price;
         this.note = note;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getAlbum() {
@@ -40,11 +51,7 @@ public class Music {
     }
 
     public String toString() {
-        return genre + ";" + titre + ";" + artist + ";" + album + ";" + price + ";" + note;
-    }
-
-    public String[] toStringTab() {
-        return new String[]{genre, artist, album, titre, price, note};
+        return id + ";" + genre + ";" + titre + ";" + artist + ";" + album + ";" + price + ";" + note;
     }
 
 }

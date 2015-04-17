@@ -23,6 +23,7 @@ public class Transaction extends OneShotBehaviour {
         agent.doWait();
         ACLMessage message = agent.receive();
         Logger.log(message);
+        // Proceed selling
         result = 0;
 
         ACLMessage response = new ACLMessage(ACLMessage.INFORM);

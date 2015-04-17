@@ -62,6 +62,19 @@ public class AgentSeeker extends Agent {
         return xstream.toXML(criteriaList);
     }
 
+    public String musicToXml(Music music) {
+        XStream xstream = new XStream(new StaxDriver());
+        xstream.alias("music", Music.class);
+        return xstream.toXML(music);
+    }
+
+    public ArrayList<ScoredMusic> getScoredMusics(String xml) {
+        XStream xstream = new XStream(new StaxDriver());
+        xstream.alias("ScoredMusics", List.class);
+        return (ArrayList<ScoredMusic>) xstream.fromXML(xml);
+    }
+
+
     public void setCriteriaList(CriteriaList criteriaList) {
         this.criteriaList = criteriaList;
     }

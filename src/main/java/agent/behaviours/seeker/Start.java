@@ -18,7 +18,7 @@ public class Start extends OneShotBehaviour {
 
     @Override
     public void action() {
-        agent.doWait(10000);
+        agent.doWait();
         ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
         message.setContent(agent.getXmlCriteriaList());
         message.addReceiver(AgentProvider.IDENTIFIANT);

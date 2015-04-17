@@ -26,15 +26,15 @@ public class Initialisation extends OneShotBehaviour {
         agent.doWait();
         ACLMessage message = agent.receive();
         Logger.log(message);
-        CriteriaList crits = agent.getCriteriaList(message.getContent());
-        List<ScoredMusic> scoredMusics = agent.getMusicsScoredByCL(crits);
-        for (ScoredMusic sc : scoredMusics) System.out.println(sc.toString());
-
-//        String xmlMusics;
-//        if (musics == null) xmlMusics = "Vide";
-//        else xmlMusics = agent.getXmlFromMusics(musics);
+        // Recupere la liste des criteres de l'agent seeker
+        CriteriaList criteria = agent.getCriteriaList(message.getContent());
+        // Effectue un traitement pour recupere les musiques qui correspondent aux criteres
+        List<ScoredMusic> scoredMusics = agent.getMusicsScoredByCL(criteria);
+        String xmlScoredMusic;
+        if (scoredMusics == null) xmlScoredMusic = "Aucun resultat";
+        else xmlScoredMusic = agent.getXmlFromScoredMusic(scoredMusics);
         ACLMessage reponse = new ACLMessage(ACLMessage.PROPOSE);
-        reponse.setContent("Hello!");
+        reponse.setContent(xmlScoredMusic);
         reponse.addReceiver(AgentSeeker.IDENTIFIANT);
         agent.send(reponse);
     }
