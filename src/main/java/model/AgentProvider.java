@@ -75,10 +75,29 @@ public class AgentProvider extends Agent {
         musicListSold.add(music);
     }
 
+    public boolean sellMusic(int id) {
+        // Retrieve music by id
+        boolean isSelled = false;
+        for (Music m : musicListAvailable) {
+            if (m.getId() == id) {
+                addMusicSold(m);
+                isSelled = true;
+                break;
+            }
+        }
+        return isSelled;
+    }
+
     public String getXmlFromMusics(List<Music> musics) {
         XStream xs = new XStream(new StaxDriver());
         xs.alias("musics", List.class);
         return xs.toXML(musics);
+    }
+
+    public Music xmlToMusic(String xml) {
+        XStream xstream = new XStream(new StaxDriver());
+        xstream.alias("music", Music.class);
+        return (Music) xstream.fromXML(xml);
     }
 
     public String getXmlFromScoredMusic(List<ScoredMusic> scoredMusics) {

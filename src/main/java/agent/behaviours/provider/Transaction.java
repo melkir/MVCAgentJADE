@@ -5,6 +5,7 @@ import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import model.AgentProvider;
 import model.AgentSeeker;
+import model.Music;
 
 /**
  * Created by melkir on 09/04/15.
@@ -23,6 +24,8 @@ public class Transaction extends OneShotBehaviour {
         agent.doWait();
         ACLMessage message = agent.receive();
         Logger.log(message);
+        Music music = agent.xmlToMusic(message.getContent());
+        boolean isSelled = agent.sellMusic(music.getId());
         // Proceed selling
         result = 0;
 
