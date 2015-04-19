@@ -24,7 +24,8 @@ public class SeekerController {
         Launcher.startAgent("agentSeeker", model);
     }
 
-    private void initModel() {
+    private void initModel() throws NumberFormatException {
+        model.setBudget(Integer.parseInt(view.getBudget()));
         CriteriaList criteriaList = new CriteriaList();
         criteriaList.setGenre(view.getGenre());
         criteriaList.setArtist(view.getArtist());
@@ -45,7 +46,12 @@ public class SeekerController {
 
     private class ButtonAddClickedListener implements Button.Clicked {
         public void onClicked(Button button) {
-            initModel();
+            try {
+                initModel();
+            } catch (NumberFormatException e) {
+                view.displayErrorMessage("Incorrect budget value");
+                return;
+            }
             model.doWake();
         }
     }

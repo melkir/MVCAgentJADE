@@ -1,8 +1,6 @@
 package view;
 
-import org.gnome.gtk.Entry;
-import org.gnome.gtk.TextBuffer;
-import org.gnome.gtk.TextView;
+import org.gnome.gtk.*;
 
 /**
  * Created by melkir on 03/03/15.
@@ -35,4 +33,8 @@ public class AgentSeekerView extends AbstractAgentView {
         textBuffer.insert(textBuffer.getIterEnd(), music + '\n');
     }
 
+    public void displayErrorMessage(String message) {
+        final MessageDialog messageDialog = new MessageDialog(window, true, MessageType.ERROR, ButtonsType.CLOSE, message);
+        if (messageDialog.run() == ResponseType.CLOSE) messageDialog.destroy();
+    }
 }

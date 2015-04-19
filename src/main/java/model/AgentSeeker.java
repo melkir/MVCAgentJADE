@@ -19,8 +19,10 @@ import java.util.List;
 public class AgentSeeker extends Agent {
 
     public static AID IDENTIFIANT = new AID("agentSeeker", AID.ISLOCALNAME);
-    private final List<Music> musicPurchasedList = new ArrayList<Music>();
+    private List<Music> musicsPurchased = new ArrayList<Music>();
+    private List<ScoredMusic> musicsToBuy = new ArrayList<ScoredMusic>();
     private CriteriaList criteriaList;
+    private int budget = 0;
 
     @Override
     protected void setup() {
@@ -34,6 +36,7 @@ public class AgentSeeker extends Agent {
         // Transitions
         behaviour.registerDefaultTransition("start", "initialisation");
         behaviour.registerDefaultTransition("initialisation", "transaction");
+        behaviour.registerTransition("transaction", "transaction", 1);
         behaviour.registerTransition("transaction", "fin", 0);
 
         addBehaviour(behaviour);
@@ -48,12 +51,24 @@ public class AgentSeeker extends Agent {
         return IDENTIFIANT.getName();
     }
 
-    public Music getPurchasedMusic(int index) {
-        return musicPurchasedList.get(index);
+    public int getBudget() {
+        return budget;
+    }
+
+    public void setBudget(int budget) {
+        this.budget = budget;
     }
 
     public void addPurchasedMusic(Music music) {
-        musicPurchasedList.add(music);
+        musicsPurchased.add(music);
+    }
+
+    public List<ScoredMusic> getMusicsToBuy() {
+        return musicsToBuy;
+    }
+
+    public void setMusicsToBuy(List<ScoredMusic> musicsToBuy) {
+        this.musicsToBuy = musicsToBuy;
     }
 
     public String getXmlCriteriaList() {
@@ -73,7 +88,6 @@ public class AgentSeeker extends Agent {
         xstream.alias("ScoredMusics", List.class);
         return (ArrayList<ScoredMusic>) xstream.fromXML(xml);
     }
-
 
     public void setCriteriaList(CriteriaList criteriaList) {
         this.criteriaList = criteriaList;

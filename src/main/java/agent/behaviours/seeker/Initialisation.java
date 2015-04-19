@@ -3,9 +3,7 @@ package agent.behaviours.seeker;
 import agent.Logger;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
-import model.AgentProvider;
 import model.AgentSeeker;
-import model.Music;
 import model.ScoredMusic;
 
 import java.util.ArrayList;
@@ -28,12 +26,8 @@ public class Initialisation extends OneShotBehaviour {
         Logger.log(message);
         // On recupere la liste des musiques que le fournisseur nous proposes
         ArrayList<ScoredMusic> scoredMusics = agent.getScoredMusics(message.getContent());
-        // Test de l'achat d'une musique
-        Music music = scoredMusics.get(0).getMusic();
-        String content = agent.musicToXml(music);
-        message = new ACLMessage(ACLMessage.REQUEST);
-        message.setContent(content);
-        message.addReceiver(AgentProvider.IDENTIFIANT);
-        agent.send(message);
+        // On initialise le modele avec la liste des musiques a achetees
+        agent.setMusicsToBuy(scoredMusics);
+        System.out.println("\n--- agentSeeker is ready to buy musics ---");
     }
 }

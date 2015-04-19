@@ -32,6 +32,7 @@ public class AgentProvider extends Agent {
         behaviour.registerLastState(new FinTransaction(this), "fin");
         // Transitions
         behaviour.registerDefaultTransition("initialisation", "transaction");
+        behaviour.registerTransition("transaction", "transaction", 1);
         behaviour.registerTransition("transaction", "fin", 0);
 
         addBehaviour(behaviour);

@@ -24,13 +24,14 @@ public class Transaction extends OneShotBehaviour {
         agent.doWait();
         ACLMessage message = agent.receive();
         Logger.log(message);
+        ACLMessage response = new ACLMessage(ACLMessage.CONFIRM);
         Music music = agent.xmlToMusic(message.getContent());
-        boolean isSelled = agent.sellMusic(music.getId());
         // Proceed selling
-        result = 0;
-
-        ACLMessage response = new ACLMessage(ACLMessage.INFORM);
-        response.setContent("Sell something");
+        boolean isSelled = agent.sellMusic(music.getId());
+        // Get the result of selling operation
+        result = (isSelled ? 1 : 0);
+        String content = "Music " + music.getTitre() + " " + (isSelled ? "sold" : "not available");
+        response.setContent(content);
         response.addReceiver(AgentSeeker.IDENTIFIANT);
         agent.send(response);
     }
