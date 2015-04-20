@@ -5,7 +5,7 @@ package model;
  */
 public class CriteriaList {
 
-    String genre, artist, album, title, nbmusic, budget, note;
+    private String genre, artist, album, title, nbmusic, budget, note;
 
     public String getGenre() {
         return genre;

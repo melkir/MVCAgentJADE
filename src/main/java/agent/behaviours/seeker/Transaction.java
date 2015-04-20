@@ -15,8 +15,9 @@ import java.util.List;
  * Created by melkir on 09/04/15.
  */
 public class Transaction extends OneShotBehaviour {
-    AgentSeeker agent;
-    int result;
+    private static int nbMusicBuyed = 0;
+    private final AgentSeeker agent;
+    private int result;
 
     public Transaction(AgentSeeker agent) {
         this.agent = agent;
@@ -29,30 +30,36 @@ public class Transaction extends OneShotBehaviour {
         List<ScoredMusic> musicsToBuy = agent.getMusicsToBuy();
         Iterator itrMusics = musicsToBuy.iterator();
         int budget = agent.getBudget();
-        ACLMessage response;
-        if (itrMusics.hasNext() & budget > 0) {
-            // Achat d'une musique
-            ScoredMusic scoredMusic = (ScoredMusic) itrMusics.next();
-            Music music = scoredMusic.getMusic();
-            response = new ACLMessage(ACLMessage.REQUEST);
-            response.setContent(agent.musicToXml(music));
-            response.addReceiver(AgentProvider.IDENTIFIANT);
-            agent.send(response);
-            result = 1;
-            agent.addPurchasedMusic(scoredMusic.getMusic());
-            musicsToBuy.remove(scoredMusic);
+        int maxNbMusicToBuy = (agent.getCriteriaNbMusic().isEmpty() ?
+                100 : Integer.parseInt(agent.getCriteriaNbMusic()));
+
+        if (itrMusics.hasNext() & maxNbMusicToBuy > nbMusicBuyed++) {
+            ScoredMusic sm = (ScoredMusic) itrMusics.next();
+            Music music = sm.getMusic();
+            int price = Integer.parseInt(music.getPrice());
+            if (price < budget) {
+                // Demande de l'achat de la musique
+                ACLMessage request = new ACLMessage(ACLMessage.REQUEST);
+                request.setContent(agent.musicToXml(music));
+                request.addReceiver(AgentProvider.IDENTIFIANT);
+                agent.send(request);
+                agent.doWait(200);
+                ACLMessage message = agent.receive();
+                Logger.log(message);
+                // MAJ des musiques
+                agent.buyMusic(sm);
+                result = 1;
+            } else {
+                result = 0;
+            }
         } else {
-            System.out.println("Seeker : Fin des achats de musiques");
-            // Fin des achats de musiques
             result = 0;
         }
-        agent.doWait();
-        ACLMessage message = agent.receive();
-        Logger.log(message);
     }
 
     @Override
     public int onEnd() {
         return result;
     }
+
 }

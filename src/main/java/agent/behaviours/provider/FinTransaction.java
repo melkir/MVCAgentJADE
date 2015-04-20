@@ -7,7 +7,7 @@ import model.AgentProvider;
  * Created by melkir on 09/04/15.
  */
 public class FinTransaction extends OneShotBehaviour {
-    AgentProvider agent;
+    private final AgentProvider agent;
 
     public FinTransaction(AgentProvider agent) {
         this.agent = agent;

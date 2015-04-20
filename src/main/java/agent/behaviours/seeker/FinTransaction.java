@@ -7,7 +7,7 @@ import model.AgentSeeker;
  * Created by melkir on 09/04/15.
  */
 public class FinTransaction extends OneShotBehaviour {
-    AgentSeeker agent;
+    private final AgentSeeker agent;
 
     public FinTransaction(AgentSeeker agent) {
         this.agent = agent;

@@ -8,14 +8,14 @@ import org.gnome.gtk.Button.Clicked;
  * Created by melkir on 02/03/15.
  */
 public class PlatformManagerView extends AbstractView {
-    RadioButton radioProvider, radioSeeker;
-    TextView textViewResult;
-    Button buttonAdd;
+    private RadioButton radioProvider;
+    private RadioButton radioSeeker;
+    private TextView textViewResult;
+    private Button buttonAdd;
 
     public PlatformManagerView() {
         super("PlatformManager.glade");
         window.connect(new Window.DeleteEvent() {
-            @Override
             public boolean onDeleteEvent(Widget widget, Event event) {
                 Gtk.mainQuit();
                 return false;

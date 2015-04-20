@@ -10,7 +10,7 @@ import model.AgentSeeker;
  */
 public class Start extends OneShotBehaviour {
 
-    AgentSeeker agent;
+    private final AgentSeeker agent;
 
     public Start(AgentSeeker agent) {
         this.agent = agent;

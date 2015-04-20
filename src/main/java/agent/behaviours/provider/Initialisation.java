@@ -14,7 +14,7 @@ import java.util.List;
  * Created by melkir on 08/04/15.
  */
 public class Initialisation extends OneShotBehaviour {
-    AgentProvider agent;
+    private final AgentProvider agent;
 
     public Initialisation(AgentProvider agent) {
         this.agent = agent;

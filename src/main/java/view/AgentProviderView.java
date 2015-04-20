@@ -9,8 +9,8 @@ import org.gnome.gtk.TextView;
  * Created by melkir on 03/03/15.
  */
 public class AgentProviderView extends AbstractAgentView {
-    TextView textViewMusicSold;
-    MusicTree musicTree;
+    private TextView textViewMusicSold;
+    private MusicTree musicTree;
 
     public AgentProviderView() {
         super("AgentProvider.glade");
