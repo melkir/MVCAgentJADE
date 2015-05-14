@@ -7,10 +7,15 @@ import org.gnome.gtk.*;
  * Created by melkir on 10/03/15.
  */
 public class MusicTree extends TreeView {
-    ListStore model;
-    DataColumnString title, artist, album, genre, price, note;
-    CellRendererText renderer;
-    TreeIter row;
+    private final ListStore model;
+    private final DataColumnString title;
+    private final DataColumnString artist;
+    private final DataColumnString album;
+    private final DataColumnString genre;
+    private final DataColumnString price;
+    private final DataColumnString note;
+    private CellRendererText renderer;
+    private TreeIter row;
 
     public MusicTree() {
         model = new ListStore(new DataColumn[]{

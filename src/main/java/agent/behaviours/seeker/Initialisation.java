@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Created by melkir on 08/04/15.
  */
 public class Initialisation extends OneShotBehaviour {
-    AgentSeeker agent;
+    private final AgentSeeker agent;
 
     public Initialisation(AgentSeeker agent) {
         this.agent = agent;

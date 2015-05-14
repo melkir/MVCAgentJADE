@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class AgentSeeker extends Agent {
 
-    public static AID IDENTIFIANT = new AID("agentSeeker", AID.ISLOCALNAME);
+    public static final AID IDENTIFIANT = new AID("agentSeeker", AID.ISLOCALNAME);
     private List<Music> musicsPurchased = new ArrayList<Music>();
     private List<ScoredMusic> musicsToBuy = new ArrayList<ScoredMusic>();
     private CriteriaList criteriaList;
@@ -59,8 +59,11 @@ public class AgentSeeker extends Agent {
         this.budget = budget;
     }
 
-    public void addPurchasedMusic(Music music) {
+    public void buyMusic(ScoredMusic sm) {
+        Music music = sm.getMusic();
         musicsPurchased.add(music);
+        musicsToBuy.remove(sm);
+        budget -= Integer.parseInt(music.getPrice());
     }
 
     public List<ScoredMusic> getMusicsToBuy() {
@@ -91,6 +94,10 @@ public class AgentSeeker extends Agent {
 
     public void setCriteriaList(CriteriaList criteriaList) {
         this.criteriaList = criteriaList;
+    }
+
+    public String getCriteriaNbMusic() {
+        return criteriaList.getNbmusic();
     }
 
 }

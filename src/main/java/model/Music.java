@@ -5,8 +5,8 @@ package model;
  */
 public class Music {
     private static int autoincrement = 0;
+    private final int id;
     private String genre, artist, album, titre, price, note;
-    private int id;
 
     public Music() {
         id = ++autoincrement;

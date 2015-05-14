@@ -6,8 +6,9 @@ import org.gnome.gtk.*;
  * Created by melkir on 03/03/15.
  */
 public class AgentSeekerView extends AbstractAgentView {
-    Entry entryNbMusic, entryMaxBudget;
-    TextView textViewMusicFound;
+    private Entry entryNbMusic;
+    private Entry entryMaxBudget;
+    private TextView textViewMusicFound;
 
     public AgentSeekerView() {
         super("AgentSeeker.glade");

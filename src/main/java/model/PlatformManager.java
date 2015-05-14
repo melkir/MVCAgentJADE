@@ -5,7 +5,8 @@ package model;
  */
 public class PlatformManager {
 
-    boolean provider, seeker;
+    private boolean provider;
+    private boolean seeker;
 
     public void addProvider() throws AgentInstanceException {
         if (provider) throw new AgentInstanceException("Only one instance of Agent Provider is allowed");

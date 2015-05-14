@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class AgentProvider extends Agent {
 
-    public static AID IDENTIFIANT = new AID("agentProvider", AID.ISLOCALNAME);
+    public static final AID IDENTIFIANT = new AID("agentProvider", AID.ISLOCALNAME);
 
     private final List<Music> musicListAvailable = new ArrayList<Music>();
     private final List<Music> musicListSold = new ArrayList<Music>();
@@ -59,19 +59,11 @@ public class AgentProvider extends Agent {
         return scoredMusics;
     }
 
-    public Music getMusicByIndex(int index) {
-        return musicListAvailable.get(index);
-    }
-
-    public Music getMusicSoldByIndex(int index) {
-        return musicListSold.get(index);
-    }
-
     public void addMusicAvailable(Music music) {
         musicListAvailable.add(music);
     }
 
-    public void addMusicSold(Music music) {
+    private void addMusicSold(Music music) {
         musicListAvailable.remove(music);
         musicListSold.add(music);
     }
@@ -87,12 +79,6 @@ public class AgentProvider extends Agent {
             }
         }
         return isSelled;
-    }
-
-    public String getXmlFromMusics(List<Music> musics) {
-        XStream xs = new XStream(new StaxDriver());
-        xs.alias("musics", List.class);
-        return xs.toXML(musics);
     }
 
     public Music xmlToMusic(String xml) {

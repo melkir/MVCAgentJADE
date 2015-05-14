@@ -12,7 +12,7 @@ public abstract class AbstractAgentView extends AbstractView {
     private ComboBoxText comboGenre;
     private RadioGroup radioGroupStars;
 
-    public AbstractAgentView(String filepath) {
+    AbstractAgentView(String filepath) {
         super(filepath);
     }
 
@@ -70,7 +70,7 @@ public abstract class AbstractAgentView extends AbstractView {
         buttonAdd.connect(listener);
     }
 
-    public void addMessageToConsole(TextView textView, String message) {
+    void addMessageToConsole(TextView textView, String message) {
         TextBuffer textBuffer = textView.getBuffer();
         textBuffer.insert(textBuffer.getIterEnd(), message + '\n');
     }

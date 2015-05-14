@@ -11,10 +11,10 @@ import java.text.ParseException;
  */
 public abstract class AbstractView {
 
-    protected final Builder builder;
-    protected final Window window;
+    final Builder builder;
+    final Window window;
 
-    public AbstractView(String filepath) {
+    AbstractView(String filepath) {
         this.builder = new Builder();
         try {
             builder.addFromFile("resources/" + filepath);
