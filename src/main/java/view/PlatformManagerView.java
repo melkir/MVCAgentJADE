@@ -15,7 +15,6 @@ public class PlatformManagerView extends AbstractView {
     public PlatformManagerView() {
         super("PlatformManager.glade");
         window.connect(new Window.DeleteEvent() {
-            @Override
             public boolean onDeleteEvent(Widget widget, Event event) {
                 Gtk.mainQuit();
                 return false;
